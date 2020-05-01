@@ -1,0 +1,26 @@
+<% @licenses.each_with_index do |license, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= license.code %></span></td>
+    <% if license.used == 1 %>
+      <td class="hidden-phone">Terpakai</td>
+    <% else %>
+      <td class="hidden-phone">Belum Digunakan</td>
+    <% end %>
+    <td class="hidden-phone"><%= license.name rescue 'Belum Digunakan'%></td>
+    <td class="hidden-phone">
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{license.id}, 'licenses')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=5>
+    <% if @licenses.present? %>
+      <%= will_paginate @licenses %>
+    <% else %>
+      <center>No Data Available</center>
+    <% end %>
+  </td>
+</tr>

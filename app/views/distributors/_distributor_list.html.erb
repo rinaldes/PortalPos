@@ -1,0 +1,25 @@
+<% @distributors.each_with_index do |distributor, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= distributor.region_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= distributor.region_name rescue '' %></td>
+    <td class="hidden-phone"><%= distributor.area_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= distributor.area_name rescue '' %></td>
+    <td><span class="name"><%= distributor.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= distributor.name rescue ''%></td>
+    <td class="hidden-phone nowrap"><%= distributor.address rescue ''%></td>
+    <td class="hidden-phone"><%= distributor.telp1 rescue ''%></td>
+    <td class="hidden-phone"><%= distributor.telp2 rescue ''%></td>
+    <td class="hidden-phone"><%= distributor.email rescue ''%></td>
+    <td class="hidden-phone"><%= distributor.fax rescue ''%></td>
+    <td class="hidden-phone nowrap">
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_distributor_path(distributor), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{distributor.id}, 'distributors')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=15>
+    <%= will_paginate @distributors %>
+  </td>
+</tr>

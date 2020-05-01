@@ -1,0 +1,23 @@
+<% @product_prices.each_with_index do |product_price, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= product_price.code rescue ''%></span></td>
+    <td><span class="name"><%= product_price.name rescue ''%></span></td>
+    <td class="hidden-phone"><%= product_price.h_jual_kecil rescue ''%></td>
+    <td class="hidden-phone"><%= product_price.h_jual_menengah rescue ''%></td>
+    <td class="hidden-phone"><%= product_price.h_jual_besar rescue '' %></td>
+    <td class="hidden-phone">
+      <%= link_to edit_product_price_path(product_price), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{product_price.id}, 'product_prices')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @product_prices %>
+  </td>
+</tr>

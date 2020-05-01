@@ -1,0 +1,24 @@
+<% @histories.each_with_index do |history, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= history.created_at rescue ''%></span></td>
+    <td class="hidden-phone"><%= history.name %></td>
+    <td class="hidden-phone"><%= history.code %></td>
+    <td class="hidden-phone"><%= history.start_at.strftime('%Y-%m-%d %h:%M') rescue '' %></td>
+    <td>
+      <% if history.status == "On Progress" %>
+          <span class="label label-warning">
+        <% elsif history.status == "Completed" %>
+          <span class="label label-success">
+        <% elsif history.status == "Failed" %>
+          <span class="label label-danger">
+      <% end %>
+      <%= history.status rescue ''%></span>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @histories %>
+  </td>
+</tr>

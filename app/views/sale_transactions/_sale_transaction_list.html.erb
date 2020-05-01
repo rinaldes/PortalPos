@@ -1,0 +1,27 @@
+<% @sale_transactions.each_with_index do |sale_transaction, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= link_to sale_transaction.transaction_number, sale_transaction_url(sale_transaction) %></td>
+    <td class="hidden-phone"><%= sale_transaction.credit_card_bank_id rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.credit_card_number rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.debit_card_bank_id rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.debit_card_number rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.discount_nominal rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.discount_percent rescue '' %></td>
+    <td class="hidden-phone"><%= Employee.find(sale_transaction.employee_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.gross rescue '' %></td>
+    <td class="hidden-phone"><%= Member.find(sale_transaction.member_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.nett rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.pay_cash rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.pay_credit_card rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.pay_debit_card rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.pay_voucher rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.transaction_date rescue '' %></td>
+    <td class="hidden-phone"><%= sale_transaction.voucher_number rescue '' %></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=18>
+    <%= will_paginate @sale_transactions %>
+  </td>
+</tr>

@@ -1,0 +1,163 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Data Master</li><li>Promo</li><li><%= label %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <div class="row">
+    <article class="col-sm-12 col-md-12"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-promotion">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2><%= label %> Promo</h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_for @promotion, html: {class: "smart-form", id: "form-update-verify"} do |f| %>
+              <fieldset>
+                <div id="pesan" hidden>
+                  <%= label_tag "Tanggal Mulai Harus Sebelum Tanggal Selesai" %>
+                </div>
+                <section>
+                  <label class="label">Kode</label>
+                  <label class="input"><%= f.text_field :code, class: "input-sm #{(error_field @promotion, :code)}", :placeholder => "Auto Generate", :disabled => true %></label>
+                </section>
+                <section>
+                  <label class="label">Dekripsi <span class='important'>*</span></label>
+                  <label class="input"><%= f.text_field :name, :class => "input-sm #{(error_field @promotion, :name)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Tanggal Mulai <span class='important'>*</span></label>
+                  <label class="input custom-input-box"><%= f.text_field :start, class: "input-sm #{(error_field @promotion, :start)} input-append success date" %><span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span> </label>
+                </section>
+                <section>
+                  <label class="label">Tanggal Akhir <span class='important'>*</span></label>
+                  <label class="input custom-input-box"><%= f.text_field :end, class: "input-sm #{(error_field @promotion, :end)} input-append success date" %><span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span> </label>
+                </section>
+                <section>
+                  <label class="label">Flag Range <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :flag_range, :class => "input-sm #{(error_field @promotion, :flag_range)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Max Apply <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :max_apply, :class => "input-sm #{(error_field @promotion, :max_apply)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Min Bruto <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :min_bruto, :class => "input-sm #{(error_field @promotion, :min_bruto)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Bruto Value <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :bruto_value, :class => "input-sm #{(error_field @promotion, :bruto_value)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Multiple Purchase Limit <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :multipler_purchase_limit, :class => "input-sm #{(error_field @promotion, :multipler_purchase_limit)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Multiple Getpercent <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :multipler_getpercent, :class => "input-sm #{(error_field @promotion, :multipler_getpercent)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Multiple Getprice <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :multipler_getprice, :class => "input-sm #{(error_field @promotion, :multipler_getprice)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Multiple Getquantity <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :multipler_getquantity, :class => "input-sm #{(error_field @promotion, :multipler_getquantity)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Min Price <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :min_price, :class => "input-sm #{(error_field @promotion, :min_price)}" %></label>
+                </section>
+                <section>
+                  <label class="label">All Outtype <span class='important'>*</span></label>
+                  <label class="input"><%= f.number_field :all_outtype, :class => "input-sm #{(error_field @promotion, :all_outtype)}" %></label>
+                </section>
+                <section>
+                  <label class="label">All Outgroup </label>
+                  <label class="input"><%= f.number_field :all_outgroup, :class => "input-sm #{(error_field @promotion, :all_outgroup)}" %></label>
+                </section>
+                <section>
+                  <label class="label">All Salesman </label>
+                  <label class="input"><%= f.number_field :all_salesman, :class => "input-sm #{(error_field @promotion, :all_salesman)}" %></label>
+                </section>
+                <section>
+                  <label class="label">All Outlet </label>
+                  <label class="input"><%= f.number_field :all_outlet, :class => "input-sm #{(error_field @promotion, :all_outlet)}" %></label>
+                </section>
+                <section>
+                  <label class="label">All Team </label>
+                  <label class="input"><%= f.number_field :all_team, :class => "input-sm #{(error_field @promotion, :all_team)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Flag Multiple </label>
+                  <label class="input"><%= f.number_field :flag_multiple, :class => "input-sm #{(error_field @promotion, :flag_multiple)}" %></label>
+                </section>
+                <section>
+                  <label class="label">Coverage Id </label>
+                  <label class="input"><%= f.number_field :coverage_id, :class => "input-sm #{(error_field @promotion, :coverage_id)}" %></label>
+                </section>
+                <section>
+                  <%= link_to 'Tambah Produk Promo', 'javascript:void(0)', class: 'btn btn-primary btn-xs add_promotion_product' %>
+                  <table class="table table-hover">           
+                    <tbody id='promotion_product'>
+                      <% if params[:action] == 'edit' %>
+                        <% @promotion.promotion_products.each{|pp| %>
+                          <%= render partial: "promotion_product", locals: {key: pp.id, object: pp} %>
+                        <% } %>
+                      <% else %>
+                        <% (params[:promotion][:promotion_products_attributes].keys rescue (0.upto(@promotion.promotion_products.size))).each{|i| %>
+                          <%= render partial: "promotion_product", locals: {key: i, object: (params[:promotion][:promotion_products_attributes][i] rescue nil)} %>
+                        <% } %>
+                      <% end %>    
+                    </tbody>
+                  </table>
+                </section>
+              </fieldset>
+              <footer>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+                <button type="button" id="sendButton" class="btn btn-default" onclick="window.history.back();">
+                  Back
+                </button>
+              </footer>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.input-append.date').datepicker({
+  autoclose: true,
+  todayHighlight: true
+  });
+  $(document).ready(function() {
+    $('.add_promotion_product').click(function(){
+      var date = new Date();
+      $.ajax({
+        url: '/promotions/add_promotion_product',
+        data: {
+          key: date.getDay() + ""+date.getMonth() + "" + date.getFullYear() + "" + date.getHours() + "" + date.getMinutes() + "" + date.getSeconds()
+        }
+      })
+    })
+  })
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

@@ -1,0 +1,22 @@
+<% @subbeats.each_with_index do |subbeat, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= subbeat.distributor_code rescue '' %></td>
+    <td class="hidden-phone"><%= subbeat.distributor_name rescue '' %></td>
+    <td class="hidden-phone"><%= subbeat.distrik_code rescue '' %></td>
+    <td class="hidden-phone"><%= subbeat.distrik_name rescue '' %></td>
+    <td class="hidden-phone"><%= subbeat.beat_code rescue '' %></td>
+    <td class="hidden-phone"><%= subbeat.beat_name rescue '' %></td>
+    <td><span class="name"><%= subbeat.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= subbeat.name rescue ''%></td>
+    <td class="hidden-phone" style='white-space: nowrap'>
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_subbeat_path(subbeat), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{subbeat.id}, 'beats')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=10>
+    <%= will_paginate @subbeats %>
+  </td>
+</tr>

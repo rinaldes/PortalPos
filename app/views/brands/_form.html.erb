@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Data Master</li><li>Merk</li><li><%= label %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <div class="row">
+    <article class="col-sm-12 col-md-6"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-brand">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2><%= label %> Merk</h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_for @brand, html: {class: "smart-form", id: "form-update-verify"} do |f| %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+
+                    <section>
+                      <label class="col-md-2 label">Kode</label>
+                      <label class="col-md-9 input custom-input-box">
+                        <%= f.text_field :code, class: "input-sm #{(error_field @brand, :code)}", :placeholder => "Auto Generate", disabled: true %>
+                      </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Nama <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :name, :class => "input-sm #{(error_field @brand, :name)}" %></label>
+                    </section>
+                    <section class="form-group">
+                      <label class="col-md-2 label">Category</label>
+                      <label class="col-md-9 input custom-input-box">
+                        <%= text_field_tag :category_id, params[:category_id], class: "input-sm autocomplete-field", placeholder: "Select or type to autocomplete" %>
+                        <a class="ui-button ui-widget ui-state-default ui-button-icon-only custom-combobox-toggle ui-corner-right" tabindex="-1" onclick="$(this).next().show()">
+                          <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span><span class="ui-button-text"></span>
+                        </a>
+                        <ul style="display: none; width: 100%; top: 29px;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content">
+                          <% @categories.each{|category| %>
+                            <li tabindex="-1" id="ui-id-2" class="ui-menu-item"><%= category %></li>
+                          <% } %>
+                        </ul>
+                      </label>
+                    </section>
+
+                  </section> <!-- col-md-12 -->
+                </div> <!-- row -->
+              </fieldset>
+              <footer>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                  Back
+                </button>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#category_id").autocomplete({
+    search: function () {},
+    source: function (request, response)
+    {
+      $.ajax(
+      {
+        url: "/categories/autocomplete_category_name",
+        dataType: "json",
+        data: {term: request.term},
+        success: function (data){
+          response(data)
+        },
+      });
+    },
+    select: function( event, ui ) {
+    },
+      minLength: 1
+    });
+})
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

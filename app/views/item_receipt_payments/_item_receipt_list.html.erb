@@ -1,0 +1,26 @@
+<% @item_receipt_payments.each_with_index do |item_receipt, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= item_receipt.account_bank_destination rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_bank_source rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_branch_destination rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_branch_source rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_name_destination rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_name_source rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_number_destination rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.account_number_source rescue '' %></td>
+    <td class="hidden-phone"><%= Cashier.find(item_receipt.cashier_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= ItemReceipt.find(item_receipt.item_receipt_id).receipt_number rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.nominal rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.pay_left rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.payment_date rescue '' %></td>    
+    <td class="hidden-phone"><%= item_receipt.payment_number rescue '' %></td>
+    <td class="hidden-phone"><%= item_receipt.payment_type rescue '' %></td>
+    <td class="hidden-phone"><%= Supplier.find(item_receipt.supplier_id).name rescue '' %></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @item_receipt_payments %>
+  </td>
+</tr>

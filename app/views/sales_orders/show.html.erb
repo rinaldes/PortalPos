@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Transaction</li><li>Sales Order</li><li><%= @sales_order.so_number %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <%= render 'layouts/errors' %>
+  <div class="row">
+    <article class="col-sm-12 col-md-12"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-shop">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2>Sales Order <%= @sales_order.so_number %></h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_tag '', {class: "smart-form", id: "form-update-verify"} do %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+                    <section>
+                      <label class="col-md-2 label">Nomor SO</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.so_number %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Cashier</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.cashier_name %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Send Date</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.delivery_date %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Instruksi Pengiriman</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.delivery_instruction %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Discount Nominal</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.discount_nominal %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label"><%= t(:fat) %></label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.fat %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label"><%= t(:gross) %></label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.gross %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Member Card Number</label>
+                      <label class="input col-md-10 custom-input-box"><%= @sales_order.member_id %></label>
+                    </section><br>
+              </fieldset>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th style='white-space: nowrap'>
+                      Base Price
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Count
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Discount Nominal
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Discount Percent
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Item Id
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Promotion
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Retur Quantity
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Selling Price
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @sales_orders_d.each_with_index do |sales_order, i| %>
+                  <tr>
+                    <td><%= sales_order.base_price rescue '' %></td>
+                    <td><%= sales_order.count rescue '' %></td>
+                    <td><%= sales_order.discount_nominal rescue '' %></td>
+                    <td><%= sales_order.discount_percent rescue '' %></td>
+                    <td><%= sales_order.item_id rescue '' %></td>
+                    <td><%= Promotion.find(sales_order.promotion_id).name rescue '' %></td>
+                    <td><%= sales_order.retur_quantity rescue '' %></td>
+                    <td><%= sales_order.selling_price rescue '' %></td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+              <footer>
+                <%= link_to 'Back', sales_orders_url, class: 'btn btn-default' %>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#distributor_id").autocomplete({
+    search: function () {},
+    source: function (request, response)
+    {
+      $.ajax(
+      {
+        url: "/distributors/autocomplete_distributor_name",
+        dataType: "json",
+        data: {term: request.term},
+        success: function (data){
+          response(data)
+        },
+      });
+    },
+    select: function( event, ui ) {
+    },
+      minLength: 1
+    });
+  $("#city_id").autocomplete({
+    search: function () {},
+    source: function (request, response)
+    {
+      $.ajax(
+      {
+        url: "/cities/autocomplete_city_name",
+        dataType: "json",
+        data: {term: request.term},
+        success: function (data){
+          response(data)
+        },
+      });
+    },
+    select: function( event, ui ) {
+    },
+      minLength: 1
+    });
+})
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

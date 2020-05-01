@@ -1,0 +1,31 @@
+<% @sales_orders.each_with_index do |sales_order, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone nowrap"><%= sales_order.cashier_name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.delivered ? 'Yes' : 'No' %></td>
+    <td class="hidden-phone"><%= sales_order.sales_order_date rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.delivery_instruction rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.discount_nominal rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.dispatched_by rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.due_date rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.fat rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.gross rescue '' %></td>
+    <td class="hidden-phone"><%= Member.find(sales_order.member_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.nett rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.ordered_by rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.paid rescue '' %></td>
+    <td class="hidden-phone"><%= Sender.find(sales_order.pengirim_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= Promotion.find(sales_order.promotion_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.remarks rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.retur rescue '' %></td>
+    <td class="hidden-phone"><%= Salesman.find(sales_order.salesman_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.so_number rescue '' %></td>
+    <td class="hidden-phone"><%= Supervisor.find(sales_order.supervisor_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.tax rescue '' %></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=22>
+    <%= will_paginate @sales_orders %>
+  </td>
+</tr>

@@ -1,0 +1,5 @@
+$("#notification").html("<%= j(render 'dashboard/notification') %>");
+<% if @supplier.errors.blank? %>
+	$("#type_ulinon-list").html("<%= j(render 'type_ulinon_list') %>");
+<% end %>
+$("#form-type_ulinon").html("<%= j(render 'form') %>");

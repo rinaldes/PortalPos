@@ -1,0 +1,5 @@
+$("#notification").html("<%= j(render 'dashboard/notification') %>");
+<% if @supplier.errors.blank? %>
+	$("#kecamatan-list").html("<%= j(render 'kecamatan_list') %>");
+<% end %>
+$("#form-kecamatan").html("<%= j(render 'form') %>");

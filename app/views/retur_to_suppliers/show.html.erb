@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Transaction</li><li>Retur to Supplier</li><li><%= ItemReceipt.find(@retur_to_supplier.receipt_id).receipt_number rescue ''%></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <%= render 'layouts/errors' %>
+  <div class="row">
+    <article class="col-sm-12 col-md-12"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-shop">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2>Retur to Supplier <%= ItemReceipt.find(@retur_to_supplier.receipt_id).receipt_number rescue ''%></h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_tag '', {class: "smart-form", id: "form-update-verify"} do %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+                    <section>
+                      <label class="col-md-2 label">Nomor Receipt</label>
+                      <label class="input col-md-10 custom-input-box"><%= ItemReceipt.find(@retur_to_supplier.receipt_id).receipt_number rescue ''%></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Price</label>
+                      <label class="input col-md-10 custom-input-box"><%= @retur_to_supplier_d.price %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Quantity</label>
+                      <label class="input col-md-10 custom-input-box"><%= @retur_to_supplier_d.quantity %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">User</label>
+                      <label class="input col-md-10 custom-input-box"><%= User.find(@retur_to_supplier_d.user_id).username %></label>
+                    </section><br>
+                    <section>
+              </fieldset>
+              <footer>
+                <%= link_to 'Back', retur_to_suppliers_url, class: 'btn btn-default' %>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

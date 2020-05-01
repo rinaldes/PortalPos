@@ -1,0 +1,69 @@
+.visiblebutton {
+  color: #A94442 !important;
+}
+.active-status-chooser input[type="radio"] {
+	float: left;
+  margin-top: 4px;
+  margin-right: 4px;
+}
+.ui-autocomplete {
+	z-index: 100;
+	background: #ffffff;
+	border: 1px solid #D5DBE0;
+	padding: 0;
+	width: 91.1% !important;
+}
+.ui-autocomplete > li {
+	padding: 6px 11px;
+	line-height: 25px;
+}
+.ui-autocomplete > li:hover {
+	background: #F7F7F7;
+}
+.ui-autocomplete > li > a {
+	cursor: pointer;
+	color: #000000;
+}
+.autocomplete-field-input {
+	width: 100%;
+}
+.ui-helper-hidden-accessible {
+	display: none;
+}
+div.page-sidebar:not(.mini) .user-info-wrapper {
+	min-height: 115px;
+}
+.ticker{
+	margin: 0;
+	padding-left: 0;
+}
+.ticker ul{
+	padding: 0;
+	list-style: none;
+	width: 100%;
+}
+.ticker li{
+	padding: 10px;
+	width: 100%;
+	height: 100px;
+	overflow: hidden;
+}
+.ticker li:after {
+	content: '';
+	display: block;
+	clear: both;
+	width: 100%;
+}
+.img-msg-blast {
+	display: block;
+	float: left;
+	width: 10%;
+	margin: 5px;
+}
+.msg-container{
+	display: block;
+	float: left;
+	width: 80%;
+	margin-left: 10px;
+	color:#fff;
+}

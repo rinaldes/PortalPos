@@ -1,0 +1,170 @@
+<div id="ribbon">
+  <ol class="breadcrumb">
+    <li>Data Master</li><li>Transaksi Penjualan</li><li>List</li>
+  </ol>
+</div>
+<div id="content">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+        <header>
+            <span class="widget-icon"> <i class="fa fa-list-ul"></i> </span>
+            <h2>List Transaksi Penjualan</h2>
+          </header>
+          <div>
+            <div class="widget-body no-padding" style='overflow-y: hidden'>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th style='white-space: nowrap'>No</th>
+                    <th style='white-space: nowrap'>
+                      ID Transaksi
+                      <%= link_to 'javascript:void(0)', id: 'id-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'id-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Credit Card Bank
+                      <%= link_to 'javascript:void(0)', id: 'credit_card_bank-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'credit_card_bank-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      No Credit Card
+                      <%= link_to 'javascript:void(0)', id: 'credit_card_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'credit_card_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Debit Card Bank
+                      <%= link_to 'javascript:void(0)', id: 'debit_card_bank-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'debit_card_bank-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      No Debit Card
+                      <%= link_to 'javascript:void(0)', id: 'debit_card_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'debit_card_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Diskon Nominal
+                      <%= link_to 'javascript:void(0)', id: 'discount_nominal-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'discount_nominal-asc', class: 'sorting'  do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Diskon Persen
+                      <%= link_to 'javascript:void(0)', id: 'discount_percent-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'discount_percent-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Pegawai
+                      <%= link_to 'javascript:void(0)', id: 'employee_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'employee_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Gross
+                      <%= link_to 'javascript:void(0)', id: 'gross-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'gross-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Anggota
+                      <%= link_to 'javascript:void(0)', id: 'member_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'member_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      NETT
+                      <%= link_to 'javascript:void(0)', id: 'nett-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'nett-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Pembayaran Cash
+                      <%= link_to 'javascript:void(0)', id: 'pay_cash-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'pay_cash-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Pembayaran Kartu Kredit
+                      <%= link_to 'javascript:void(0)', id: 'pay_credit_card-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'pay_credit_card-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Pembayaran Kartu Debit
+                      <%= link_to 'javascript:void(0)', id: 'pay_debit_card-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'pay_debit_card-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Pembayaran Voucher
+                      <%= link_to 'javascript:void(0)', id: 'pay_voucher-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'pay_voucher-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Tanggal Transaksi
+                      <%= link_to 'javascript:void(0)', id: 'transaction_date-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'transaction_date-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Nomor Voucher
+                      <%= link_to 'javascript:void(0)', id: 'voucher_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                      <%= link_to 'javascript:void(0)', id: 'voucher_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th class="hasinput">
+                      <%= text_field_tag :credit_card_bank, params[:credit_card_bank], class: 'form-control search', name: 'sale_transactions.credit_card_no' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :credit_card_number, params[:credit_card_number], class: 'form-control search', name: 'members.name' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :debit_card_bank, params[:debit_card_bank], class: 'form-control search', name: 'sales_order.so_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :debit_card_number, params[:debit_card_number], class: 'form-control search', name: 'sale_transactions.total' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :discount_nominal, params[:discount_nominal], class: 'form-control search', name: 'sale_transactions.transaction_date' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :discount_percent, params[:discount_percent], class: 'form-control search', name: 'sale_transaction.transaction_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :employee_name, params[:employee_name], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :gross, params[:gross], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :member_name, params[:member_name], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :nett, params[:nett], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :pay_cash, params[:pay_cash], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :pay_credit_card, params[:pay_credit_card], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :pay_debit_card, params[:pay_credit_card], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :pay_voucher, params[:pay_voucher], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :transaction_date, params[:transaction_date], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :transaction_number, params[:transaction_number], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :voucher_number, params[:voucher_number], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id='sale_transaction-list'><%= render 'sale_transaction_list' %></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

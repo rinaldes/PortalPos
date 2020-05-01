@@ -1,0 +1,17 @@
+<% @retur_to_suppliers.each_with_index do |retur_to_supplier, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= link_to ItemReceipt.find(retur_to_supplier.receipt_id).receipt_number, retur_to_supplier_url(retur_to_supplier) %></td>
+    <td class="hidden-phone"><%= retur_to_supplier.note rescue '' %></td>
+    <td class="hidden-phone"><%= Supplier.find(retur_to_supplier.supplier_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= retur_to_supplier.total rescue '' %></td>
+    <td class="hidden-phone"><%= retur_to_supplier.transaction_date rescue ''%></td>
+    <td class="hidden-phone"><%= SaleTransaction.find(retur_to_supplier.transaction_id).transaction_number rescue ''%></td>
+    <td class="hidden-phone"><%= User.find(retur_to_supplier.user_id).username rescue ''%></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @retur_to_suppliers %>
+  </td>
+</tr>

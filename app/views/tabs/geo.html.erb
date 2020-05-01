@@ -1,0 +1,9 @@
+<header class="panel-heading tab-bg-dark-navy-blue "%>
+<ul class="nav nav-tabs">
+  <li class="<%= params[:controller] == 'wilayahs' ? 'active' : ''%>"><%= link_to "Wilayah", wilayahs_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'provinces' ? 'active' : ''%>"><%= link_to "Provinsi", provinces_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'cities' ? 'active' : ''%>"><%= link_to "Kota", cities_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'kecamatans' ? 'active' : ''%>"><%= link_to "Kecamatan", kecamatans_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'kelurahans' ? 'active' : ''%>"><%= link_to "Kelurahan", kelurahans_path(:id => params[:id]) %></li>
+</ul>
+</header>

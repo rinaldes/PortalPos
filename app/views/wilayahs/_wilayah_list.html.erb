@@ -1,0 +1,20 @@
+<% @wilayahs.each_with_index do |wilayah, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= wilayah.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= wilayah.name rescue ''%></td>
+    <td class="hidden-phone">
+      <%= link_to edit_wilayah_path(wilayah), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{wilayah.id}, 'wilayahs')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @wilayahs %>
+  </td>
+</tr>

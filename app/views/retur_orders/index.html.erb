@@ -1,0 +1,120 @@
+<div id="ribbon">
+  <ol class="breadcrumb">
+    <li>Data Master</li><li>Retur Penjualan</li><li>List</li>
+  </ol>
+</div>
+<div id="content">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+        <header>
+            <span class="widget-icon"> <i class="fa fa-list-ul"></i> </span>
+            <h2>List Retur Penjualan</h2>
+          </header>
+          <div>
+
+            <div class="widget-body no-padding">
+
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+
+                    <th>No</th>
+
+                    <th>
+                      Deskripsi
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'description-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'description-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Member
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'member_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'member_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Sales Order 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'sales_order-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'sales_order-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Total
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'total-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'total-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Tanggal Transaksi
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'transaction_date-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'transaction_date-asc', class: 'sorting'  do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Transaksi
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'transaction_code-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'transaction_code-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Pengguna
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'username-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'username-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                  </tr>
+
+                  <tr>
+                    <th></th>
+                    <th class="hasinput">
+                      <%= text_field_tag :description, params[:description], class: 'form-control search', name: 'retur_orders.description' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :member_name, params[:member_name], class: 'form-control search', name: 'members.name' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :sales_order, params[:sales_order], class: 'form-control search', name: 'sales_order.so_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :total, params[:total], class: 'form-control search', name: 'retur_orders.total' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :transaction_date, params[:transaction_date], class: 'form-control search', name: 'retur_orders.transaction_date' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :transaction_code, params[:transaction_code], class: 'form-control search', name: 'sale_transaction.transaction_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :username, params[:username], class: 'form-control search', name: 'users.username' %>
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody id='retur_order-list'><%= render 'retur_order_list' %></tbody>
+              </table>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

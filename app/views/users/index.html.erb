@@ -1,0 +1,61 @@
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Data Master</li><li>User</li><li>List</li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <section id="widget-grid" class=""><!-- widget grid -->
+    <div id='notice_template'>'<%= render 'layouts/notice' %></div>
+    <div class="row"><!-- row -->
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!-- NEW WIDGET START -->
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>List User</h2>
+          </header>
+          <div><!-- widget div-->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <%= link_to new_user_url, :class => "btn btn-labeled btn-primary edit-btn-primary" do %>
+              <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>Tambah User
+              <% end %>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>
+                      Nama Lengkap <%= link_to raw('<i class="fa fa-sort-desc"></i>'), 'javascript:void(0)', id: 'fullname-desc', class: 'sorting hide' %>
+                      <%= link_to raw('<i class="fa fa-sort-asc"></i>'), 'javascript:void(0)', id: 'fullname-asc', class: 'sorting' %>
+                    </th>
+                    <th>
+                      Username <%= link_to raw('<i class="fa fa-sort-desc"></i>'), 'javascript:void(0)', id: 'username-desc', class: 'sorting hide' %>
+                      <%= link_to raw('<i class="fa fa-sort-asc"></i>'), 'javascript:void(0)', id: 'username-asc', class: 'sorting' %>
+                    </th>
+                    <th>
+                      Email
+                      <%= link_to raw('<i class="fa fa-sort-desc"></i>'), 'javascript:void(0)', id: 'email-desc', class: 'sorting hide' %>
+                      <%= link_to raw('<i class="fa fa-sort-asc"></i>'), 'javascript:void(0)', id: 'email-asc', class: 'sorting' %>
+                    </th>
+                    <th>
+                      Role <%= link_to raw('<i class="fa fa-sort-desc"></i>'), 'javascript:void(0)', id: 'role_name-desc', class: 'sorting hide' %>
+                      <%= link_to raw('<i class="fa fa-sort-asc"></i>'), 'javascript:void(0)', id: 'role_name-asc', class: 'sorting' %>
+                    </th>
+                    <th>Aksi</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th class="hasinput"><%= text_field_tag :fullname, params[:fullname], class: 'form-control search', name: "concat(first_name, ' ', last_name)" %></th>
+                    <th class="hasinput"><%= text_field_tag :username, params[:username], class: 'form-control search' %></th>
+                    <th class="hasinput"><%= text_field_tag :email, params[:email], class: 'form-control search' %></th>
+                    <th class="hasinput"><%= text_field_tag :role_name, params[:role_name], class: 'form-control search', name: 'roles.name' %></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id='user-list'><%= render 'user_list' %></tbody>
+              </table>
+            </div><!-- end widget -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+    </div>	<!-- end row -->
+  </section><!-- end widget grid -->
+</div>	<!-- end row -->

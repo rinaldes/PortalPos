@@ -1,0 +1,22 @@
+<% @kecamatans.each_with_index do |kecamatan, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= kecamatan.wilayah_code rescue '' %></td>
+    <td class="hidden-phone"><%= kecamatan.wilayah_name rescue '' %></td>
+    <td class="hidden-phone"><%= kecamatan.province_code rescue '' %></td>
+    <td class="hidden-phone"><%= kecamatan.province_name rescue '' %></td>
+    <td class="hidden-phone"><%= kecamatan.city_code rescue '' %></td>
+    <td class="hidden-phone"><%= kecamatan.city_name rescue '' %></td>
+    <td><span class="name"><%= kecamatan.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= kecamatan.name rescue ''%></td>
+    <td class="hidden-phone nowrap">
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_kecamatan_path(kecamatan), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{kecamatan.id}, 'kecamatans')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=10>
+    <%= will_paginate @kecamatans %>
+  </td>
+</tr>

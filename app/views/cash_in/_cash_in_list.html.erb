@@ -1,0 +1,17 @@
+<% cash.each_with_index do |cash_in, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= cash_in.cash_value rescue '' %></td>
+    <td class="nowrap"><%= cash_in.description rescue '' %></td>
+    <td class="hidden-phone"><%= cash_in.jurnal_id rescue '' %></td>
+    <td class="hidden-phone"><%= cash_in.number_id rescue '' %></td>
+    <td class="hidden-phone"><%= cash_in.transaction_date rescue '' %></td>
+    <td class="hidden-phone"><%= cash_in.transaction_id %></td>
+    <td class="hidden-phone"><%= User.find(cash_in.user_id).username rescue ''%></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate cash %>
+  </td>
+</tr>

@@ -1,0 +1,5 @@
+$("#notification").html("<%= j(render 'dashboard/notification') %>");
+<% if @supplier.errors.blank? %>
+	$("#subbeat-list").html("<%= j(render 'subbeat_list') %>");
+<% end %>
+$("#form-subbeat").html("<%= j(render 'form') %>");

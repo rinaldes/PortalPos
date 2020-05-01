@@ -1,0 +1,27 @@
+<tr>
+  <div class="nested-fields addform clearfix">
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][code]", (object[:code] rescue ''), class: "input-sm", readonly: true, :placeholder => "Auto Generate" %>
+    </td>
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][min]", (object[:min] rescue ''), class: "input-sm" %>
+    </td>
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][max]", (object[:max] rescue ''), class: "input-sm" %>
+    </td>
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][jenis]", (object[:jenis] rescue ''), class: "input-sm" %>
+    </td>
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][percent]", (object[:percent] rescue ''), class: "input-sm" %>
+    </td>
+    <td>
+      <%= text_field_tag "discount[discount_hargas_attributes][#{key}][price]", (object[:price] rescue ''), class: "input-sm" %>
+    </td>
+    <td>
+      <a class="close" data-dismiss="alert" href="#">
+        <i class="fa fa-remove"></i>
+      </a>
+    </td>
+  </div>
+</tr>

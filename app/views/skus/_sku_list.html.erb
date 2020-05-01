@@ -1,0 +1,23 @@
+<% @skus.each_with_index do |sku, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= sku.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= sku.name rescue ''%></td>
+    <td class="hidden-phone"><%= sku.division_code rescue '' %></td>
+    <td class="hidden-phone"><%= sku.category_name rescue '' %></td>
+    <td class="hidden-phone"><%= sku.brand_name rescue '' %></td>
+    <td class="hidden-phone">
+      <%= link_to edit_sku_path(sku), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{sku.id}, 'skus')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @skus %>
+  </td>
+</tr>

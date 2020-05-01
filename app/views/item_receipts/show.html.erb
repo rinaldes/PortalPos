@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Transaction</li><li>Item Receipt</li><li><%= @item_receipt.receipt_number %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <%= render 'layouts/errors' %>
+  <div class="row">
+    <article class="col-sm-12 col-md-12"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-shop">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2>Item Receipt <%= @item_receipt.receipt_number %></h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_tag '', {class: "smart-form", id: "form-update-verify"} do %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+                    <section>
+                      <label class="col-md-2 label">Nomor Receipt</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.receipt_number %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Discount Nominal</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.discountNominal %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Description</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.description %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Due Date</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.due_date %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Employee</label>
+                      <label class="input col-md-10 custom-input-box"><%= Employee.find(@item_receipt.employee_id).name rescue ''%></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Nett</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.nett %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Paid</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.paid %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Payment Type</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.payment_type %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">PO Number</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.po_number %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Receipt Date</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.receipt_date %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Receipt Number</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.receipt_number %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Receiver Name</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.receiver_name %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Retur</label>
+                      <label class="input col-md-10 custom-input-box"><%= @item_receipt.due_date %></label>
+                    </section><br>
+                    <section>
+                      <label class="col-md-2 label">Supplier</label>
+                      <label class="input col-md-10 custom-input-box"><%= Supplier.find(@item_receipt.supplier_id).name rescue ''%></label>
+                    </section><br>
+                    <section>
+              </fieldset>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th style='white-space: nowrap'>
+                      Item ID
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Price
+                    </th>
+                    <th style='white-space: nowrap'>
+                      Receipt Count
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% @item_receipt_d.each_with_index do |sales_order, i| %>
+                  <tr>
+                    <td><%= sales_order.item_id rescue '' %></td>
+                    <td><%= sales_order.price rescue '' %></td>
+                    <td><%= sales_order.receipt_count rescue '' %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+              <footer>
+                <%= link_to 'Back', item_receipts_url, class: 'btn btn-default' %>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

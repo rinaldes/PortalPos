@@ -1,0 +1,16 @@
+<% @stock_ops.each_with_index do |stock_op, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= stock_op.approved == 1 ? 'Approved' : 'Pending' rescue '' %></td>
+    <td class="hidden-phone"><%= stock_op.approved_date rescue '' %></td>
+    <td class="hidden-phone"><%= stock_op.description rescue '' %></td>
+    <td class="hidden-phone"><%= stock_op.transaction_date rescue ''%></td>
+    <td class="hidden-phone"><%= SaleTransaction.find(stock_op.transaction_id).transaction_number rescue ''%></td>
+    <td class="hidden-phone"><%= User.find(stock_op.user_id).username rescue ''%></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @stock_ops %>
+  </td>
+</tr>

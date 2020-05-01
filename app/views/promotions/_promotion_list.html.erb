@@ -1,0 +1,37 @@
+<% @promotions.each_with_index do |promotion, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= promotion.code %></span></td>
+    <td class="hidden-phone"><%= promotion.name %></td>
+    <td class="hidden-phone"><%= promotion.start %></td>
+    <td class="hidden-phone"><%= promotion.end %></td>
+    <td class="hidden-phone"><%= promotion.flag_range %></td>
+    <td class="hidden-phone"><%= promotion.max_apply %></td>
+    <td class="hidden-phone"><%= promotion.min_bruto %></td>
+    <td class="hidden-phone"><%= promotion.bruto_value %></td>
+    <td class="hidden-phone"><%= promotion.multipler_purchase_limit %></td>
+    <td class="hidden-phone"><%= promotion.multipler_getpercent %></td>
+    <td class="hidden-phone"><%= promotion.multipler_getprice %></td>
+    <td class="hidden-phone"><%= promotion.multipler_getquantity %></td>
+    <td class="hidden-phone"><%= promotion.min_price %></td>
+    <td class="hidden-phone"><%= promotion.all_outtype %></td>
+    <td class="hidden-phone"><%= promotion.all_outgroup %></td>
+    <td class="hidden-phone"><%= promotion.all_salesman %></td>
+    <td class="hidden-phone"><%= promotion.all_outlet %></td>
+    <td class="hidden-phone"><%= promotion.all_team %></td>
+    <td class="hidden-phone"><%= promotion.flag_multiple %></td>
+    <td class="hidden-phone">
+      <%= link_to edit_promotion_path(promotion), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{promotion.id}, 'promotions')", class: "btn btn-danger btn-xs edit-btn-dlt" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @promotions %>
+  </td>
+</tr>

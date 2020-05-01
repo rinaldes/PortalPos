@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon">
+  <ol class="breadcrumb">
+    <li>Data Master</li><li>Schedule</li><li>List</li>
+  </ol>
+</div>
+<div id="content">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Jadwal Sync</h2>
+          </header>
+          <div>
+            <div class="widget-body no-padding">
+              <%= form_for @schedule, html: {class: "smart-form", id: "form-update-verify"} do |f| %>
+                <fieldset>
+                  <div class="row">
+                    <section class="col col-md-12">
+                      <section>
+                        <label class="col-md-2 label">Kode</label>
+                        <label class="col-md-9 input custom-input-box">
+                          <%= f.text_field :code, class: "input-sm #{(error_field @wilayah, :code)}", :placeholder => "Auto Generate", disabled: true %>
+                        </label>
+                      </section>
+                      <section>
+                        <label class="col-md-2 label">Nama <span class='important'>*</span></label>
+                        <label class="col-md-9 input custom-input-box"><%= f.text_field :name, :class => "input-sm #{(error_field @wilayah, :name)}" %></label>
+                      </section>
+                    </section>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+<script type="text/javascript">
+  $('.date').clockpicker();
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

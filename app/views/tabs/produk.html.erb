@@ -1,0 +1,10 @@
+<header class="panel-heading tab-bg-dark-navy-blue "%>
+<ul class="nav nav-tabs">
+  <li class="<%= params[:controller] == 'principals' ? 'active' : ''%>"><%= link_to "Principal", principals_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'divisions' ? 'active' : ''%>"><%= link_to "Divisi", divisions_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'categories' ? 'active' : ''%>"><%= link_to "Kategori", categories_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'brands' ? 'active' : ''%>"><%= link_to "Merk", brands_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'skus' ? 'active' : ''%>"><%= link_to "SKU", skus_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'plus' ? 'active' : ''%>"><%= link_to "PLU", plus_path(:id => params[:id]) %></li>
+</ul>
+</header>

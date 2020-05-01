@@ -1,0 +1,180 @@
+<div id="ribbon">
+  <ol class="breadcrumb">
+    <li>Data Master</li><li>Transaksi Penjualan</li><li>List</li>
+  </ol>
+</div>
+<div id="content">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <%= render :template => 'tabs/ir' %>
+          <div>
+            <div class="widget-body no-padding" style='overflow-y: hidden'>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th style='white-space: nowrap'>
+                      Bank Tujuan
+                        <%= link_to 'javascript:void(0)', id: 'credit_card_bank-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'credit_card_bank-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Bank Asal
+                        <%= link_to 'javascript:void(0)', id: 'credit_card_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'credit_card_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Cabang Tujuan
+                        <%= link_to 'javascript:void(0)', id: 'debit_card_bank-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'debit_card_bank-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Cabang Asal
+                        <%= link_to 'javascript:void(0)', id: 'debit_card_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'debit_card_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nama Tujuan
+                        <%= link_to 'javascript:void(0)', id: 'discount_nominal-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'discount_nominal-asc', class: 'sorting'  do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nama Asal
+                        <%= link_to 'javascript:void(0)', id: 'discount_percent-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'discount_percent-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nomor Tujuan
+                        <%= link_to 'javascript:void(0)', id: 'employee_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'employee_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nomor Asal
+                        <%= link_to 'javascript:void(0)', id: 'gross-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'gross-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Cashier
+                        <%= link_to 'javascript:void(0)', id: 'member_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'member_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+
+                    <th style='white-space: nowrap'>
+                      Receipt Number
+                        <%= link_to 'javascript:void(0)', id: 'nett-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'nett-asc', class: 'sorting'  do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nominal
+                        <%= link_to 'javascript:void(0)', id: 'paid-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'paid-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Sisa Pembayaran
+                        <%= link_to 'javascript:void(0)', id: 'paid-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'paid-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Tanggal Pembayaran
+                        <%= link_to 'javascript:void(0)', id: 'paid-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'paid-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Metode Pembayaran
+                        <%= link_to 'javascript:void(0)', id: 'payment_type-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'payment_type-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Nomor Penerimaan
+                        <%= link_to 'javascript:void(0)', id: 'po_number-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'po_number-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                    <th style='white-space: nowrap'>
+                      Supplier
+                        <%= link_to 'javascript:void(0)', id: 'supplier_name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'supplier_name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                    </th>
+
+                  </tr>
+
+                  <tr>
+                    <th style='white-space: nowrap'></th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_bank_destination, params[:account_bank_destination], class: 'form-control search', name: 'item_receipts.account_bank_destination' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_bank_source, params[:account_bank_source], class: 'form-control search', name: 'item_receipts.account_bank_source' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_branch_destination, params[:delivery_date], class: 'form-control search', name: 'item_receipt.account_branch_destination' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_branch_source, params[:account_branch_source], class: 'form-control search', name: 'item_receipts.account_branch_source' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_name_destination, params[:account_name_destination], class: 'form-control search', name: 'item_receipts.account_name_destination' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_name_source, params[:account_name_source], class: 'form-control search', name: 'item_receipts.account_name_source' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_number_destination, params[:account_number_destination], class: 'form-control search', name: 'item_receipts.account_number_destination' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :account_number_source, params[:account_number_source], class: 'form-control search', name: 'item_receipts.account_number_source' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :cashier, params[:cashier], class: 'form-control search', name: 'cashiers.name' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :receipt_number, params[:so_number], class: 'form-control search', name: 'item_receipts.so_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :nominal, params[:nominal], class: 'form-control search', name: 'item_receipts.nominal' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :pay_left, params[:pay_left], class: 'form-control search', name: 'item_receipts.pay_left' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :payment_date, params[:payment_date], class: 'form-control search', name: 'item_receipts.payment_date' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :payment_number, params[:payment_number], class: 'form-control search', name: 'item_receipts.payment_number' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :payment_type, params[:payment_type], class: 'form-control search', name: 'item_receipts.payment_type' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :supplier_name, params[:supplier_name], class: 'form-control search', name: 'supplier.name' %>
+                    </th>                
+                  </tr>
+                </thead>
+                <tbody id='item_receipt-list'><%= render 'item_receipt_list' %></tbody>
+              </table>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

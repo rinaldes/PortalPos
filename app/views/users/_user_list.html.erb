@@ -1,0 +1,18 @@
+<% @users.each_with_index do |user, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= user.fullname %></span></td>
+    <td class="hidden-phone"><%= user.username %></td>
+    <td class="hidden-phone"><%= user.email %></td>
+    <td class="hidden-phone"><%= user.role_name %></td>
+    <td class="hidden-phone">
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_user_path(user), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{user.id}, 'users')", class: "btn btn-danger btn-xs edit-btn-dlt" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @users %>
+  </td>
+</tr>

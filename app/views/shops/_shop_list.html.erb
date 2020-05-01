@@ -1,0 +1,29 @@
+<% @shops.each_with_index do |shop, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= shop.distributor_code rescue ''%></td>
+    <td><span class="name"><%= shop.code rescue ''%></span></td>
+    <td><span class="name"><%= shop.name rescue ''%></span></td>
+    <td class="hidden-phone"><%= shop.address rescue ''%></td>
+    <td class="hidden-phone"><%= shop.city_name rescue ''%></td>
+    <td class="hidden-phone"><%= shop.area_name rescue '' %></td>
+    <td class="hidden-phone"><%= shop.region_name rescue '' %></td>
+    <td class="hidden-phone"><%= shop.telp rescue '' %></td>
+    <td class="hidden-phone"><%= shop.fax rescue '' %></td>
+    <td class="hidden-phone"><%= shop.email rescue '' %></td>
+    <td class="hidden-phone"><%= shop.npwp rescue '' %></td>
+    <td class="hidden-phone">
+      <%= link_to edit_shop_path(shop), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{shop.id}, 'shops')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @shops %>
+  </td>
+</tr>

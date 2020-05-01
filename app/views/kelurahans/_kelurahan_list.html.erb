@@ -1,0 +1,24 @@
+<% @kelurahans.each_with_index do |kelurahan, i| %>
+  <tr>
+    <td class="hidden-phone nowrap"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.wilayah_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.wilayah_name rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.province_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.province_name rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.city_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.city_name rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.kecamatan_code rescue '' %></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.kecamatan_name rescue '' %></td>
+    <td><span class="name"><%= kelurahan.code rescue ''%></span></td>
+    <td class="hidden-phone nowrap"><%= kelurahan.name rescue ''%></td>
+    <td class="hidden-phone nowrap">
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_kelurahan_path(kelurahan), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{kelurahan.id}, 'kelurahans')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=12>
+    <%= will_paginate @kelurahans %>
+  </td>
+</tr>

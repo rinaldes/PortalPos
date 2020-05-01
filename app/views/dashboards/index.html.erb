@@ -1,0 +1,586 @@
+<style type="text/css">
+.export-btn {
+  width: 100%;
+  padding: 0 4px;
+  background-color: #fff;
+  border: 0;
+  color: #000;
+}
+.export-btn:hover{
+  color: #fff;
+  background-color: #286090;
+}
+.btn-list{
+  font-size: 14px;
+  padding: 0 10px;
+}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="ribbon">
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span>
+  </span>
+  <ol class="breadcrumb">
+    <li>Home</li><li>Dashboard</li>
+  </ol>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8"></div>
+  </div>
+  <section id="widget-grid" class=""><!-- widget grid -->
+    <div class="row"><!-- GAUGE -->
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+          <header><h2>Primary</h2></header>
+          <div>
+            <div class="jarviswidget-editbox"><input class="form-control" type="text"></div>
+            <div class="widget-body">
+              <ul class="list-inline">
+                <div class="col-md-5">
+                  <div id='prim-ach-outer'></div>
+                </div>
+                <div class="col-md-5">
+                  <div id='prim-gro-outer'></div>
+                </div>
+              </div>
+            </ul>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </article>
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6"><!-- SECONDARY -->
+        <div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+          <header><h2>Secondary</h2></header>
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input class="form-control" type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body"><!-- widget content -->
+              <ul class="list-inline"><!-- this is what the user will see -->
+                <div class="col-md-5">
+                  <div id='sec-ach-outer'></div>
+                </div>
+                <div class="col-md-5">
+                  <div id='sec-gro-outer'></div>
+                </div>
+              </ul>
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article>
+    </div><!-- end widget -->
+    <!-- GAUGE END -->
+    <div class="row"><!-- row -->
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!-- NEW WIDGET START -->
+        <div class="jarviswidget jarviswidget-color-white" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+            <h2>Distributor Achievement</h2>
+          </header>
+          <div><!-- widget div-->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <div id="map_canvas" class="google_maps"></div>
+            </div>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </article><!-- end widget -->
+    </div><!-- WIDGET END --><!-- end row -->
+    <div class="row"><!-- row -->
+      <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+          <header><h2>Primary Sales by Brand</h2></header>
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input class="form-control" type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body"><!-- widget content -->
+              <%= select_tag :text_pri_pie_chart, options_for_select(['Value (Rp)', 'CRT', 'TON']), onchange: "loadPriPieData()" %>
+              <div id="pieChartPrimary" height="120"></div><!-- this is what the user will see -->
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+      <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><!-- NEW WIDGET START -->
+        <div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+          <header><h2>Secondary Sales by Brand</h2></header>
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input class="form-control" type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body"><!-- widget content -->
+              <%= select_tag :text_sec_pie_chart, options_for_select(['Value (Rp)', 'CRT', 'TON']), onchange: "loadSecPieData()" %>
+              <div id="pieChartSecondary" height="120"></div><!-- this is what the user will see -->
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+      <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><!-- NEW WIDGET START -->
+        <div class="jarviswidget" id="wid-id-6" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-editbutton="false" data-widget-sortable="false">
+          <header><h2 id='stock_in_crt'>Stock in CRT</h2></header>
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input class="form-control" type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body"><!-- widget content -->
+              <%= select_tag :text_stock_chart, options_for_select(['Value (Rp)', 'CRT', 'TON']), onchange: "loadStockData()" %>
+              <div id="pieChartStock" height="120"></div><!-- this is what the user will see -->
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-12"><!-- PRIMARY AND SECONDARI LINE CHART -->
+        <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body no-padding"><!-- widget content -->
+            <%= select_tag :text_line_chart, options_for_select(['Value (Rp)', 'CRT', 'TON']), style: "margin: 14px 0 0 14px", onchange: "loadLineChart()" %>
+            <div id="primsec" class="primsec" style="min-width: 310px; height: 200px; margin: 0 auto"></div>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+      <article id="topprim" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Top 10 Product by Secondary </h2>
+          </header>
+          <div><!-- widget div-->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <table id="top_product" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                  <tr>
+                    <th data-hide="phone">RANK</th>
+                    <th data-class="expand">PCODE</th>
+                    <th>PCODENAME</th>
+                    <th style='text-align: right'>
+                      AMOUNT 
+                    </th>
+                    <th style='text-align: right'>
+                      CRT
+                    </th>
+                    <th style='text-align: right'>
+                      BERAT
+                    </th>
+                    <th style='text-align: right'>
+                      %DIST
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id='top_product'>
+                  <% @topten_products.each_with_index{ |fdata, i| %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td><%= fdata.pcode %></td>
+                      <td><%= fdata.codename %></td>
+                      <td style='text-align: right'><%= number_to_currency fdata.rp, unit: '' %></td>
+                      <td style='text-align: right'><%= number_to_currency fdata.krt, unit: '', precision: 0 %></td>
+                      <td style='text-align: right'><%= number_to_currency fdata.brt, unit: '', precision: 0 %></td>
+                      <td style='text-align: right'><%= number_to_currency (fdata.rp/@total_products_crt*100), unit: '', precision: 2 %>%</td>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div>
+      </article>
+      <article id="topdist" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span><h2>Top 50 Distributor </h2>
+              <%= form_tag distributors_url(:id => params[:id], format: "xls"), multipart: true do %>
+                <%= hidden_field_tag "distributors", @topten_distributors.map(&:code).join(',') %>
+                <div class="text-right" style="margin-top: -5px; margin-right:4px;">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-reorder"></i> 
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                      <li><%= submit_tag "Export Excel", class: "export-btn" %></li>
+                      <li><%= submit_tag "Export CSV", class: "export-btn" %></li>
+                    </ul>
+                </div>
+              <% end %>
+            </div>
+          </header>
+          <div><!-- widget div-->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <table id="top_distributor" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                  <tr>
+                    <th data-hide="phone">RANK</th>
+                    <th data-class="expand">DIST</th>
+                    <th>NAMA DISTRIBUTOR</th>
+                    <th style='text-align: right'>AMOUNT</th>
+                    <th style='text-align: right'>%DIST</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @topten_distributors.each_with_index{ |fdata, i| %>
+                    <tr>
+                      <td><%= i+1 %></td>
+                      <td><%= fdata.code %></td>
+                      <td><%= fdata.name %></td>
+                      <td style='text-align: right'><%#= number_to_currency fdata.sec_val, unit: '', precision: 0 %></td>
+                      <td style='text-align: right'><%#= number_to_currency (fdata.sec_val/@total*100), unit: '', precision: 2 %>%</td>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div>
+      </article>
+      <article id="topdist" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span><h2 id='outlet_type'>Secondary Sales by Type Outlet</h2>
+          </header>
+          <div><!-- widget div-->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <table id="sec_sales_per_outlet" class="table table-striped table-bordered table-hover" width="100%">
+                <%#= render 'sec_sales_per_outlet' %>
+              </table>
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div>
+      </article>
+      <article class="col-xs-12 col-sm-6 col-md-6 col-lg-12"><!-- PRIMARY AND SECONDARI LINE CHART -->
+        <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <div><!-- widget div-->
+            <div class="jarviswidget-editbox"><!-- widget edit box -->
+              <input type="text"><!-- This area used as dropdown edit box -->
+            </div><!-- end widget edit box -->
+            <div class="widget-body no-padding"><!-- widget content -->
+              <%#= select_tag :text_line_chart, options_for_select(['Value (Rp)', 'CRT', 'TON']), style: "margin: 14px 0 0 14px", onchange: "loadLineChart()" %>
+              <div id="sec_sales" class="primsec" style="min-width: 310px; height: 500px; margin: 0 auto"></div>
+            </div><!-- end widget content -->
+          </div><!-- end widget div -->
+        </div><!-- end widget -->
+      </article><!-- WIDGET END -->
+    </div><!-- end row -->
+  </section>
+</div><!-- END MAIN CONTENT --><!-- end widget grid -->
+<SCRIPT>
+  window.setTimeout(function(){
+    $.ajax({
+      dataType: "json",
+      type: "get",
+      url: "/dashboard/ufs5_by_outlet_type",
+      data: {},
+      success: function(data) {
+        loadSecSalesByType(data)
+      }
+    })
+    loadLineChart()
+    loadPieData()
+    $.ajax({
+      dataType: "json",
+      type: "get",
+      url: "/customers/list",
+      data: {},
+      success: function(data) {
+        demoLoadAttribute(data);
+      }
+    })
+    $('#top_product').dataTable({
+      "paginate": false,
+      "language": {
+        "sLengthMenu": '', "sInfo": '', "sInfoFiltered": "", "zeroRecords": ''
+      }
+    })
+    $('#sec_sales_per_outlet').dataTable({
+      "paginate": false,
+      "language": {
+        "sLengthMenu": '', "sInfo": '', "sInfoFiltered": "", "zeroRecords": ''
+      }
+    })
+    $('#top_distributor').dataTable({
+      "paginate": false,
+      "language": {
+        "sLengthMenu": '', "sInfo": '', "sInfoFiltered": "", "zeroRecords": ''
+      }
+    })
+  }, 900);
+
+  function sec_sales_per_outlet(outlet_type, outlet_type_name){
+    $.ajax({
+      dataType: "script",
+      type: "get",
+      url: "/dashboard/sec_sales_per_outlet",
+      data: {outlet_type: outlet_type, outlet_type_name: outlet_type_name}
+    })
+  }
+
+  function loadSecSalesByType(data){
+    Number.prototype.formatMoney = function(c, d, t){
+    var n = this, 
+        c = isNaN(c = Math.abs(c)) ? 2 : c, 
+        d = d == undefined ? "." : d, 
+        t = t == undefined ? "," : t, 
+        s = n < 0 ? "-" : "", 
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+        j = (j = i.length) > 3 ? j % 3 : 0;
+       return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+     };
+    $('#sec_sales').highcharts({
+        chart: {type: 'column'}, title: {text: 'Secondary Sales by Type Outlet Tahun 2015'}, xAxis: {categories: data.periods},
+        yAxis: {
+            min: 0, title: {text: ''}, stackLabels: {enabled: true, style: {fontWeight: 'bold', color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'}}
+        },
+        legend: {
+            align: 'right', x: -30, verticalAlign: 'top', y: 25, floating: true, backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white', borderColor: '#CCC',
+            borderWidth: 1, shadow: false, layout: "vertical"
+        },
+        tooltip: {
+          formatter: function () {
+            return '<b>' + this.x + '</b><br/>' + this.series.name + ': ' + (this.y).formatMoney(0, '.', ',') + '<br/>Total: ' + (this.point.stackTotal).formatMoney(0, '.', ',');
+          }
+        },
+        plotOptions: {
+            column: {stacking: 'normal', dataLabels: {enabled: true, color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white', style: {textShadow: '0 0 3px black'}}}
+        },
+        series: data.series
+    });
+    for(i=0; i<$('g.highcharts-data-labels g text tspan').length; i++){
+      $('g.highcharts-data-labels g text tspan')[i].innerHTML = $('g.highcharts-data-labels g text tspan')[i].innerHTML.replace(/ /g, ',')
+    }
+    for(i=0; i<$('g.highcharts-stack-labels text tspan').length; i++){
+      $('g.highcharts-stack-labels text tspan')[i].innerHTML = $('g.highcharts-stack-labels text tspan')[i].innerHTML.replace(/ /g, ',')
+    }
+  }
+
+  function loadLineChart(){
+    window.setTimeout(function(){
+      $.ajax({
+        dataType: "json",
+        type: "get",
+        url: "/dashboard/line_chart",
+        data: {text: $('#text_line_chart').val()},
+        success: function(data) {
+          LoadChart(data);
+        }
+      })
+    }, 900);
+  }
+
+  function loadPieData(){
+    window.setTimeout(function(){
+      loadStockData()
+      loadSecPieData()
+      loadPriPieData()
+    }, 900);
+  }
+
+  function loadPriPieData(){
+    $.ajax({
+      dataType: "json",
+      type: "get",
+      url: "/dashboard/load_primary_sales_by_brand",
+      data: {text: $('#text_pri_pie_chart').val()},
+      success: function(data) {
+        LoadPrimarySalesChart(data);
+      }
+    })
+  }
+
+  function loadSecPieData(){
+    $.ajax({
+      dataType: "json",
+      type: "get",
+      url: "/dashboard/load_secondary_sales_by_brand",
+      data: {text: $('#text_sec_pie_chart').val()},
+      success: function(data) {
+        LoadSecondarySalesChart(data);
+      }
+    })
+  }
+
+  function loadStockData(){
+      $.ajax({
+        dataType: "json",
+        type: "get",
+        url: "/dashboard/load_stock_by_brand",
+        data: {text: $('#text_stock_chart').val()},
+        success: function(data) {
+          LoadStockChart(data);
+        }
+      })
+  }
+
+  function demoLoadAttribute(data) {/*jslint smarttabs:true */
+    var latlngs = {};
+    var markers = []
+    var infowindow = []
+    var images = []
+    var centerLatLng = new google.maps.LatLng(1, 1),
+    mapOptions = {
+      mapTypeId : google.maps.MapTypeId.TERRAIN, mapTypeControlOptions: {mapTypeIds: [google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE]}
+    },
+    bounds = new google.maps.LatLngBounds(),
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    for (var i=0; i<data.length; i++){
+      if (data[i].achievement<=50){
+        images.push({
+          url: '/img/markers/merah.png', size: new google.maps.Size(27, 33),// This marker is 20 pixels wide by 32 pixels tall.
+          origin: new google.maps.Point(0,0),// The origin for this image is 0,0.
+          anchor: new google.maps.Point(0, 33)// The anchor for this image is the base of the flagpole at 0,32.
+        });
+      }
+      else if (data[i].achievement<=70){
+        images.push({
+          url: '/img/markers/kuning.png', size: new google.maps.Size(27, 33),// This marker is 20 pixels wide by 32 pixels tall.
+          origin: new google.maps.Point(0,0),// The origin for this image is 0,0.
+          anchor: new google.maps.Point(0, 33)// The anchor for this image is the base of the flagpole at 0,32.
+        });
+      }
+      else{
+        images.push({
+          url: '/img/markers/hijau.png', size: new google.maps.Size(27, 33),// This marker is 20 pixels wide by 32 pixels tall.
+          origin: new google.maps.Point(0,0),// The origin for this image is 0,0.
+          anchor: new google.maps.Point(0, 33)// The anchor for this image is the base of the flagpole at 0,32.
+        });
+      }
+      var outletId = "outlet_" + data[i].id
+      if (latlngs[outletId] == undefined)
+        latlngs[outletId] = []
+      latlng = new google.maps.LatLng(data[i].lat, data[i].long)
+      latlngs[outletId].push(new google.maps.LatLng(data[i].lat, data[i].long));
+      bounds.extend(new google.maps.LatLng(data[i].lat, data[i].long));
+      markers.push(new google.maps.Marker({icon: images[i], position: latlng, map: map, title: data[i].name+': '+data[i].achievement+'%'}))
+      infowindow.push(new google.maps.InfoWindow({
+        content: '<div id="content"><div id="bodyContent"><p>'+data[i].name+' : '+data[i].achievement+'%</p><p>AREA : '+data[i].area_name+'</p><p>TARGET : '+data[i].target_sec2015
+          +'</p><p>SECSALES : '+data[i].secsales+'</p></div></div>'
+      }));
+      google.maps.event.addListener(markers[i], 'mouseover', (function(markers, i) {
+        return function() {
+          for (var idx_infowindow = 0; idx_infowindow<infowindow.length; idx_infowindow++)
+            infowindow[idx_infowindow].close()
+          infowindow[i].open(map, markers[i]);
+        }
+      })(markers, i));
+    }
+    map.fitBounds(bounds);
+  }
+
+  function LoadPrimarySalesChart(data){
+    $('#pieChartPrimary').highcharts({
+      chart: {plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false, type: 'pie'}, title: {text: ''},
+      tooltip: {pointFormat: '<b>{point.percentage:.1f}%</b>'},
+      plotOptions: {
+        pie: {allowPointSelect: true, cursor: 'pointer', dataLabels: {enabled: true, format: '{point.percentage:.1f} %',
+        style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}}, showInLegend: true}
+      },
+      series: data.sales_by_brand
+    });
+  }
+
+  function LoadSecondarySalesChart(data){
+    $('#pieChartSecondary').highcharts({
+      chart: {plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false, type: 'pie'}, title: {text: ''},
+      tooltip: {pointFormat: '<b>{point.percentage:.1f}%</b>'},
+      plotOptions: {
+        pie: {allowPointSelect: true, cursor: 'pointer', dataLabels: {enabled: true, format: '{point.percentage:.1f} %',
+        style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}}, showInLegend: true}
+      },
+      series: data.sales_by_brand
+    });
+  }
+
+  function LoadStockChart(data){
+    $('#prim-ach-outer').highcharts({
+      chart: {
+        type: 'gauge', plotBackgroundColor: null, plotBackgroundImage: null, plotBorderWidth: 0, plotShadow: false, spacingBottom: 15, spacingTop: 10, spacingLeft: 10,
+        spacingRight: 10, width: 210, height: 210
+      }, title: {text: 'ACHIEVEMENT 2015'}, pane: {
+        startAngle: -150, endAngle: 150, background: [
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#FFF'], [1, '#333']]}, borderWidth: 0, outerRadius: '109%'},
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#333'], [1, '#FFF']]}, borderWidth: 1, outerRadius: '107%'}, {},
+          {backgroundColor: '#DDD', borderWidth: 0, outerRadius: '105%', innerRadius: '103%'}
+        ]
+      },
+      yAxis: {
+        min: 0, max: 100, minorTickInterval: 'auto', minorTickWidth: 1, minorTickLength: 10, minorTickPosition: 'inside', minorTickColor: '#666', tickPixelInterval: 30,
+        tickWidth: 2, tickPosition: 'inside', tickLength: 10, tickColor: '#666', labels: {step: 2,rotation: 'auto'}, title: {text: ''},
+        plotBands: [{from: 0, to: 40, color: '#DF5353'}, {from: 40, to: 80, color: '#DDDF0D'}, {from: 80, to: 100, color: '#55BF3B'}]
+      }, series: [{name: 'Achievement', data: [<%= @pri_achievement %>], tooltip: {valueSuffix: ' %'}}]
+    })
+    $('#prim-gro-outer').highcharts({
+      chart: {
+        type: 'gauge', plotBackgroundColor: null, plotBackgroundImage: null, plotBorderWidth: 0, plotShadow: false, spacingBottom: 15, spacingTop: 10, spacingLeft: 10,
+        spacingRight: 10, width: 210, height: 210
+      }, title: {text: 'GROWTH ( 2015 vs 2014 )'}, pane: {
+        startAngle: -150, endAngle: 150, background: [
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#FFF'], [1, '#333']]}, borderWidth: 0, outerRadius: '109%'},
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#333'], [1, '#FFF']]}, borderWidth: 1, outerRadius: '107%'}, {},
+          {backgroundColor: '#DDD', borderWidth: 0, outerRadius: '105%', innerRadius: '103%'}
+        ]
+      },
+      yAxis: {
+        min: 0, max: 100, minorTickInterval: 'auto', minorTickWidth: 1, minorTickLength: 10, minorTickPosition: 'inside', minorTickColor: '#666', tickPixelInterval: 30,
+        tickWidth: 2, tickPosition: 'inside', tickLength: 10, tickColor: '#666', labels: {step: 2,rotation: 'auto'}, title: {text: ''},
+        plotBands: [{from: 0, to: 40, color: '#DF5353'}, {from: 40, to: 80, color: '#DDDF0D'}, {from: 80, to: 100, color: '#55BF3B'}]
+      }, series: [{name: 'Growth', data: [<%= @pri_growth %>], tooltip: {valueSuffix: ' %'}}]
+    })
+    $('#sec-ach-outer').highcharts({
+      chart: {
+        type: 'gauge', plotBackgroundColor: null, plotBackgroundImage: null, plotBorderWidth: 0, plotShadow: false, spacingBottom: 15, spacingTop: 10, spacingLeft: 10,
+        spacingRight: 10, width: 210, height: 210
+      }, title: {text: 'ACHIEVEMENT 2015'}, pane: {
+        startAngle: -150, endAngle: 150, background: [
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#FFF'], [1, '#333']]}, borderWidth: 0, outerRadius: '109%'},
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#333'], [1, '#FFF']]}, borderWidth: 1, outerRadius: '107%'}, {},
+          {backgroundColor: '#DDD', borderWidth: 0, outerRadius: '105%', innerRadius: '103%'}
+        ]
+      },
+      yAxis: {
+        min: 0, max: 100, minorTickInterval: 'auto', minorTickWidth: 1, minorTickLength: 10, minorTickPosition: 'inside', minorTickColor: '#666', tickPixelInterval: 30,
+        tickWidth: 2, tickPosition: 'inside', tickLength: 10, tickColor: '#666', labels: {step: 2,rotation: 'auto'}, title: {text: ''},
+        plotBands: [{from: 0, to: 40, color: '#DF5353'}, {from: 40, to: 70, color: '#DDDF0D'}, {from: 70, to: 100, color: '#55BF3B'}]
+      }, series: [{name: 'Achievement', data: [<%= @sec_achievement %>], tooltip: {valueSuffix: ' %'}}]
+    })
+    $('#sec-gro-outer').highcharts({
+      chart: {
+        type: 'gauge', plotBackgroundColor: null, plotBackgroundImage: null, plotBorderWidth: 0, plotShadow: false, spacingBottom: 15, spacingTop: 10, spacingLeft: 10,
+        spacingRight: 10, width: 210, height: 210
+      }, title: {text: 'GROWTH ( 2015 vs 2014 )'}, pane: {
+        startAngle: -150, endAngle: 150, background: [
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#FFF'], [1, '#333']]}, borderWidth: 0, outerRadius: '109%'},
+          {backgroundColor: {linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, '#333'], [1, '#FFF']]}, borderWidth: 1, outerRadius: '107%'}, {},
+          {backgroundColor: '#DDD', borderWidth: 0, outerRadius: '105%', innerRadius: '103%'}
+        ]
+      },
+      yAxis: {
+        min: 0, max: 100, minorTickInterval: 'auto', minorTickWidth: 1, minorTickLength: 10, minorTickPosition: 'inside', minorTickColor: '#666', tickPixelInterval: 30,
+        tickWidth: 2, tickPosition: 'inside', tickLength: 10, tickColor: '#666', labels: {step: 2,rotation: 'auto'}, title: {text: ''},
+        plotBands: [{from: 0, to: 40, color: '#DF5353'}, {from: 40, to: 70, color: '#DDDF0D'}, {from: 70, to: 100, color: '#55BF3B'}]
+      }, series: [{name: 'Growth', data: [<%= @sec_growth %>], tooltip: {valueSuffix: ' %'}}]
+    })
+    $('#pieChartStock').highcharts({
+      chart: {plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false, type: 'pie'}, title: {text: ''},
+      tooltip: {pointFormat: '<b>{point.percentage:.1f}%</b>'},
+      plotOptions: {
+        pie: {allowPointSelect: true, cursor: 'pointer', dataLabels: {enabled: true, format: '{point.percentage:.1f} %',
+        style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}}, showInLegend: true}
+      },
+      series: data.series, drilldown: data.drilldown
+    });
+  }
+
+  function LoadChart(data) {
+    $('#primsec').highcharts({title: {text: 'PRIMARY & SECONDARY & STOCK 2015 IN '+$('#text_line_chart').val(), x: -20}, subtitle: {text: '', x: -20}, xAxis: {categories: ['Jan',
+      'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}, yAxis: {title: {text: ''}, plotLines: [{value: 0, width: 1, color: '#808080'}]},
+      legend: {layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0}, series: data.line_chart
+    });
+  }
+</script>
+<script src="/js/plugin/highchart/highcharts.js"></script>
+<script src="/js/plugin/highchart/exporting.js"></script>
+<script src="/js/plugin/highchart/highcharts-more.js"></script>
+<script src="/js/plugin/highchart/drilldown.js"></script>

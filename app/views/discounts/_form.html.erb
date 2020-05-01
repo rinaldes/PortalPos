@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Data Master</li><li>Diskon</li><li><%= label %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <div class="row">
+    <article class="col-sm-12 col-md-6"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-discount">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2><%= label %> Diskon</h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_for @discount, html: {class: "smart-form", id: "form-update-verify"} do |f| %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+
+                    <section>
+                      <label class="col-md-2 label">Kode</label>
+                      <label class="col-md-9 input custom-input-box">
+                        <%= f.text_field :code, class: "input-sm #{(error_field @discount, :code)}", :placeholder => "Auto Generate", disabled: true %>
+                      </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Dekripsi <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :name, :class => "input-sm #{(error_field @discount, :name)}" %></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Tanggal Mulai <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :start, class: "input-sm #{(error_field @discount, :start)} input-append success date" %><span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span> </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Tanggal Akhir <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :end, class: "input-sm #{(error_field @discount, :end)} input-append success date" %><span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span> </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Pilihan Kisaran <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :pilihan, :class => "input-sm #{(error_field @discount, :pilihan)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Multi Diskon <span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :multi, :class => "input-sm #{(error_field @discount, :multi)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Flag Multi<span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :flag, :class => "input-sm #{(error_field @discount, :flag)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Batas Penjualan<span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.number_field :batas, :class => "input-sm #{(error_field @discount, :batas)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Multi Persen<span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.number_field :multi_persen, :class => "input-sm #{(error_field @discount, :multi_persen)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Multi Nilai<span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.number_field :multi_nilai, :class => "input-sm #{(error_field @discount, :multi_nilai)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Cakupan<span class='important'>*</span></label>
+                      <label class="col-md-9 input custom-input-box"><%= f.text_field :cakupan, :class => "input-sm #{(error_field @discount, :cakupan)}"%></label>
+                    </section>
+                  </section> <!-- col-md-12 -->
+                </div> <!-- row -->
+              </fieldset>
+              <%= link_to 'Tambah Discount Harga', 'javascript:void(0)', class: 'btn btn-primary btn-xs add_discount_harga' %>
+              <table class="table table-hover">
+                <thead>
+                  <th>Kode</th>
+                  <th>Terkecil</th>
+                  <th>Terbesar</th>
+                  <th>Jenis</th>
+                  <th>Persen</th>
+                  <th>Nilai Rupiah</th>
+                </thead>            
+                <tbody id='discount_harga'>
+                  <% if params[:action] == 'edit' %>
+                    <% @discount.discount_hargas.each{|dh| %>
+                      <%= render partial: "discount_harga", locals: {key: dh.id, object: dh} %>
+                    <% } %>
+                  <% else %>
+                    <% (params[:discount][:discount_hargas_attributes].keys rescue (0.upto(@discount.discount_hargas.size))).each{|i| %>
+                      <%= render partial: "discount_harga", locals: {key: i, object: (params[:discount][:discount_hargas_attributes][i] rescue nil)} %>
+                    <% } %>
+                  <% end %>    
+                </tbody>
+              </table>
+
+              <br><br>
+              <%= link_to 'Tambah Discount Product', 'javascript:void(0)', class: 'btn btn-primary btn-xs add_discount_product' %>
+              <table class="table table-hover">
+                <thead>
+                  <th width="250px">Product</th>
+                  <th>Jumlah Terkecil</th>
+                  <th>Jumlah Terbesar</th>
+                  <th>Persen Diskon</th>
+                </thead>            
+                <tbody id='discount_product'>
+                  <% if params[:action] == 'edit' %>
+                    <% @discount.discount_products.each{|dp| %>
+                      <%= render partial: "discount_product", locals: {key: dp.id, object: dp} %>
+                    <% } %>
+                  <% else %>
+                    <% (params[:discount][:discount_products_attributes].keys rescue (0.upto(@discount.discount_products.size))).each{|i| %>
+                      <%= render partial: "discount_product", locals: {key: i, object: (params[:discount][:discount_products_attributes][i] rescue nil)} %>
+                    <% } %>
+                  <% end %>
+                </tbody>
+              </table>
+
+              <footer>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                  Back
+                </button>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script type="text/javascript">
+  $('.input-append.date').datepicker({
+  autoclose: true,
+  todayHighlight: true
+  });
+  $(document).ready(function() {
+    $('.add_discount_harga').click(function(){
+      var date = new Date();
+      $.ajax({
+        url: '/discounts/add_discount_harga',
+        data: {
+          key: date.getDay() + ""+date.getMonth() + "" + date.getFullYear() + "" + date.getHours() + "" + date.getMinutes() + "" + date.getSeconds()
+        }
+      })
+    })
+    $('.add_discount_product').click(function(){
+      var date = new Date();
+      $.ajax({
+        url: '/discounts/add_discount_product',
+        data: {
+          key: date.getDay() + ""+date.getMonth() + "" + date.getFullYear() + "" + date.getHours() + "" + date.getMinutes() + "" + date.getSeconds()
+        }
+      })
+    })
+  })
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

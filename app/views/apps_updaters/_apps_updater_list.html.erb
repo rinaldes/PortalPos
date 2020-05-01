@@ -1,0 +1,25 @@
+<% @apps_updaters.each_with_index do |apps_updater, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= apps_updater.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= apps_updater.name rescue ''%></td>
+    <td class="hidden-phone"><%= apps_updater.date rescue ''%></td>
+    <td class="hidden-phone">
+      <%= link_to edit_apps_updater_path(apps_updater), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{apps_updater.id}, 'apps_updaters')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=4>
+    <% if @apps_updaters.present? %>
+      
+    <% else %>
+      <%= raw '<center>No Data Available</center>' %>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,10 @@
+<header class="panel-heading tab-bg-dark-navy-blue "%>
+<ul class="nav nav-tabs">
+  <li class="<%= params[:controller] == 'regions' ? 'active' : ''%>"><%= link_to t(:region), regions_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'areas' ? 'active' : ''%>"><%= link_to t(:area), areas_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'distributors' ? 'active' : ''%>"><%= link_to "Penyalur", distributors_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'distriks' ? 'active' : ''%>"><%= link_to "Distrik", distriks_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'beats' ? 'active' : ''%>"><%= link_to "Beat", beats_path(:id => params[:id]) %></li>
+  <li class="<%= params[:controller] == 'subbeats' ? 'active' : ''%>"><%= link_to "Subbeat", subbeats_path(:id => params[:id]) %></li>
+</ul>
+</header>

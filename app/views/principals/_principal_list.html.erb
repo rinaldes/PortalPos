@@ -1,0 +1,21 @@
+<% @principals.each_with_index do |principal, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= principal.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= principal.name rescue ''%></td>
+    <td class="hidden-phone"><%= principal.address rescue ''%></td>
+    <td class="hidden-phone"><%= principal.no_telp1 rescue ''%></td>
+    <td class="hidden-phone"><%= principal.no_telp2 rescue ''%></td>
+    <td class="hidden-phone"><%= principal.fax rescue ''%></td>
+    <td class="hidden-phone"><%= principal.email rescue ''%></td>
+    <td class="hidden-phone" style='white-space: nowrap'>
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_principal_path(principal), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{principal.id}, 'principals')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=9>
+    <%= will_paginate @principals %>
+  </td>
+</tr>

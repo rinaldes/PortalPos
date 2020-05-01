@@ -1,0 +1,29 @@
+<% @discounts.each_with_index do |discount, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= discount.code rescue ''%></span></td>
+    <td><span class="name"><%= discount.name rescue ''%></span></td>
+    <td class="hidden-phone"><%= discount.start rescue ''%></td>
+    <td class="hidden-phone"><%= discount.end rescue ''%></td>
+    <td class="hidden-phone"><%= discount.pilihan rescue '' %></td>
+    <td class="hidden-phone"><%= discount.multi rescue '' %></td>
+    <td class="hidden-phone"><%= discount.flag rescue '' %></td>
+    <td class="hidden-phone"><%= discount.batas rescue '' %></td>
+    <td class="hidden-phone"><%= discount.multi_persen rescue '' %></td>
+    <td class="hidden-phone"><%= discount.multi_nilai rescue '' %></td>
+    <td class="hidden-phone"><%= discount.cakupan rescue '' %></td>
+    <td class="hidden-phone">
+      <%= link_to edit_discount_path(discount), class: "btn btn-primary btn-xs" do %>
+        <i class="fa fa-pencil"> Edit</i>
+      <% end %>
+      <%= link_to 'javascript:void(0)', onclick: "delete_one(#{discount.id}, 'discounts')", class: "btn btn-danger btn-xs" do %>
+        <i class="fa fa-trash-o"> Delete</i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @discounts %>
+  </td>
+</tr>

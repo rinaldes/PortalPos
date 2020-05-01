@@ -1,0 +1,266 @@
+<header id="header"><!-- HEADER -->
+  <div id="logo-group">
+    <span id="logo"> <img src="/img/pratesis.png" alt="SmartAdmin"> </span><!--
+    <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>-->
+    <div class="ajax-dropdown"><!--
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-default"><input type="radio" name="activity" id="ajax/notify/mail.html">Msgs (14) </label>
+        <label class="btn btn-default"><input type="radio" name="activity" id="ajax/notify/notifications.html">notify (3) </label>
+        <label class="btn btn-default"><input type="radio" name="activity" id="ajax/notify/tasks.html">Tasks (4) </label>
+      </div> notification content
+      <div class="ajax-notifications custom-scroll">
+        <div class="alert alert-transparent">
+          <h4>Click a button to show messages here</h4>
+          This blank page message helps protect your privacy, or you can show the first message here automatically.
+        </div>
+        <i class="fa fa-lock fa-4x fa-border"></i>
+      </div> -->
+      <span> Last updated on: 12/12/2013 9:43AM<!-- footer: refresh area -->
+        <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+          <i class="fa fa-refresh"></i>
+        </button>
+      </span><!-- end footer -->
+    </div><!-- END AJAX-DROPDOWN -->
+  </div><!--
+  <div class="project-context hidden-xs">
+    <span class="label">Projects:</span>
+    <span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+    <ul class="dropdown-menu">
+      <li><a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a></li>
+      <li><a href="javascript:void(0);">Notes on pipeline upgradee</a></li>
+      <li><a href="javascript:void(0);">Assesment Report for merchant account</a></li>
+      <li class="divider"></li>
+      <li><a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a></li>
+    </ul>
+  </div>end projects dropdown -->
+  <div class="pull-right"><!-- pulled right: nav area -->
+    <div id="hide-menu" class="btn-header pull-right"><!-- collapse menu button -->
+      <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+    </div><!-- end collapse menu -->
+    <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5"><!-- #MOBILE --><!-- Top menu profile link : this shows only when top menu is active -->
+      <li class="">
+      <% begin %>
+        <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+          <img src="/img/avatars/sunny.png" alt="<%= current_user.username %>" class="online" />
+        </a>
+      <%rescue%>
+      <%end%>
+						<ul class="dropdown-menu pull-right">
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span>
+					  <%= link_to raw('<i class="fa fa-sign-out"></i>'), 'javascript:void(0)', onclick: "delete_one(0, '#{destroy_user_session_path}')" %>
+					</span>
+				</div>
+				<!-- end logout button -->
+
+				<!-- search mobile button (this is hidden till mobile view port) -->
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+				</div>
+				<!-- end search mobile button -->
+
+				<!-- input: search field -->
+				<form action="search.html" class="header-search pull-right">
+					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+				</form>
+				<!-- end input: search field -->
+
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+
+				<!-- #Voice Command: Start Speech -->
+				<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+					<div>
+						<a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
+						<div class="popover bottom"><div class="arrow"></div>
+							<div class="popover-content">
+								<h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
+								<h4 class="vc-title-error text-center">
+									<i class="fa fa-microphone-slash"></i> Voice command failed
+									<br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+									<br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+								</h4>
+								<a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a>
+								<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end voice command -->
+<!-- multiple lang dropdown : find all flags in the flags page
+        <ul class="header-dropdown-list hidden-xs">
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="/img/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+						<ul class="dropdown-menu pull-right">
+							<li class="active">
+								<a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-fr" alt="France"> Français</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
+							</li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-de" alt="German"> Deutsch</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-cn" alt="China"> 中文</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a></li>
+          <li><a href="javascript:void(0);"><img src="/img/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a></li>
+        </ul> -->
+      </li>
+    </ul><!-- end multiple lang -->
+  </div><!-- end pulled right: nav area -->
+</header><!-- END HEADER -->
+<aside id="left-panel"><!-- Left panel : Navigation area, This width of the aside area can be adjusted through LESS variables -->
+  <div class="login-info"><!-- User info -->
+    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+      <a href="javascript:void(0);">
+        <img src="/img/avatars/sunny.png" alt="me" class="online" />
+        <%begin%>
+        <span><%= current_user.fullname %></span>
+        <%rescue%>
+        <%end%>
+      </a>
+    </span>
+  </div><!-- end user info -->
+  <nav><!-- NAVIGATION : This navigation is also responsive-->
+    <ul>
+<!--
+      <li class="<%= 'active' if params[:controller] == 'dashboards' %>" >
+        <a href="<%= root_url %>" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+      </li>
+-->
+      <li>
+        <a href="#"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">Master Data</span></a>
+        <ul>
+          <li class='<%= 'active' if %w(brands categories skus principals divisions plus).include?(params[:controller]) %>'>
+            <%= link_to raw('<i class="fa fa-truck"></i> Produk'), principals_path %>
+          </li>
+          <li class='<%= 'active' if %w(distriks beats regions areas distributors subbeats).include?(params[:controller]) %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Sales Area'), regions_path %>
+          </li>
+          <li class='<%= 'active' if %w(kecamatans kelurahans wilayahs provinces cities).include?(params[:controller]) %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Geo Area'), wilayahs_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'type_ulinons' %>'>
+            <%= link_to raw('<i class="fa fa-qrcode"></i> Tipe ULI/Non'), type_ulinons_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'product_prices' %>'>
+            <%= link_to raw('<i class="fa fa-barcode"></i> Harga Produk'), product_prices_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'promotions' %>'>
+            <%= link_to raw('<i class="fa fa-tags"></i> Promosi'), promotions_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'discounts' %>'>
+            <%= link_to raw('<i class="fa fa-tag"></i> Diskon'), discounts_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'shops' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Toko'), shops_path %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">Transaction</span></a>
+        <ul>
+          <li class='<%= 'active' if params[:controller] == 'sales_orders' %>'>
+            <%= link_to raw('<i class="fa fa-qrcode"></i> Sales Order'), '/sales_orders' %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'item_receipts' %>'>
+            <%= link_to raw('<i class="fa fa-barcode"></i> Penerimaan Barang'), '/item_receipts' %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'sale_transactions' %>'>
+            <%= link_to raw('<i class="fa fa-tags"></i> Transaksi Penjualan'), '/sale_transactions' %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'stock_ops' %>'>
+            <%= link_to raw('<i class="fa fa-tag"></i> Stock OP'), '/stock_ops' %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'retur_orders' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Retur Penjualan'), '/retur_orders' %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'retur_to_suppliers' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Retur ke Supplier'), '/retur_to_suppliers' %>
+          </li>
+          <li class='<%= 'active' if %w(cash_in cash_out).include?(params[:controller]) %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Dana masuk dan Keluar'), '/cash_in' %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-lg fa-fw fa-wrench"></i> <span class="menu-item-parent">Setting</span></a>
+        <ul>
+          <li class='<%= 'active' if params[:controller] == 'users' %>'><%= link_to raw('<i class="fa fa-user"></i> User Setting'), users_path %></li>
+          <li class='<%= 'active' if params[:controller] == 'roles' %>'><%= link_to raw('<i class="fa fa-group"></i> Role Management'), roles_path %></li>
+          <li class='<%= 'active' if params[:controller] == 'licenses' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Lisensi'), licenses_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'apps_updaters' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Update Aplikasi'), apps_updaters_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'histories' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Riwayat Sync'), histories_path %>
+          </li>
+          <li class='<%= 'active' if params[:controller] == 'schedules' %>'>
+            <%= link_to raw('<i class="fa fa-group"></i> Jadwal Sync'), schedules_path %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <span class="minifyme" data-action="minifyMenu">
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+</aside><!-- END NAVIGATION -->

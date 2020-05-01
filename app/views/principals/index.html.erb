@@ -1,0 +1,147 @@
+<div id="ribbon">
+  <ol class="breadcrumb">
+    <li>Data Master</li><li>Principal</li><li>List</li>
+  </ol>
+</div>
+<div id="content">
+  <section id="widget-grid" class="">
+    <div class="row">
+      <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false"><!-- Widget ID (each widget will need unique ID)-->
+          <%= render :template => 'tabs/produk' %>
+          <div>
+            <div class="widget-body no-padding">
+              <%= link_to new_principal_url, :class => "btn btn-labeled btn-primary edit-btn-primary" do %>
+              <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>Tambah Principal
+              <% end %>
+                <ul id="myTab1" class="nav nav-tabs" style='margin: 20px 0 6px 6px; float: left'>
+                  <li class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i></button>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Eksport ke CSV",  principals_path(:id => params[:id], format: "csv"), style: 'color: #333 !important' %></li>
+                      <li><%= link_to "Eksport ke Excel", principals_path(:id => params[:id], format: "xls"), style: 'color: #333 !important' %></li>
+                      <li data-toggle="modal" data-target="#myModal"><a style='color: #333 !important'>Import dari CSV</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>
+                      Kode
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'code-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'code-asc', class: 'sorting'  do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+                    <th>
+                      Nama Principal
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'name-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'name-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Address 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'address-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'address-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      No Telepon 1 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'no_telp1-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'no_telp1-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      No Telepon 2 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'no_telp2-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'no_telp2-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      Fax 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'fax-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'fax-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>
+                      E-mail 
+                      <span style="float: right;">
+                        <%= link_to 'javascript:void(0)', id: 'email-desc', class: 'sorting hide' do %><i class="fa fa-sort-desc"></i><% end %>
+                        <%= link_to 'javascript:void(0)', id: 'email-asc', class: 'sorting' do %><i class="fa fa-sort-asc"></i><% end %>
+                      </span>
+                    </th>
+
+                    <th>Aksi</th>
+
+                  </tr>
+
+                  <tr>
+                    <th></th>
+                    <th class="hasinput">
+                      <%= text_field_tag :code, params[:code], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :name, params[:name], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :address, params[:address], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :no_telp1, params[:no_telp1], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :no_telp2, params[:no_telp2], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :fax, params[:fax], class: 'form-control search' %>
+                    </th>
+                    <th class="hasinput">
+                      <%= text_field_tag :email, params[:email], class: 'form-control search' %>
+                    </th>
+                    <th></th>
+                    
+                  </tr>
+                </thead>
+                <tbody id='principal-list'><%= render 'principal_list' %></tbody>
+              </table>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Import Principal</h4>
+      </div>
+      <%= form_tag import_principals_path(:id => params[:id]), multipart: true do %>
+        <div class="modal-body">
+          <%= file_field_tag :file %>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Download Template", principals_path(format: "csv", :a => "a"), :class => "btn btn-success" %>
+          <%= submit_tag "Import", :class => "btn btn-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

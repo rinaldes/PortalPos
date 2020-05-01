@@ -1,0 +1,31 @@
+<% @sales_order_payments.each_with_index do |sales_order, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= sales_order.account_bank_destination rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_bank_source rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_branch_destination rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_branch_source rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_name_destination rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_name_source rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_number_destination rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.account_number_source rescue '' %></td>
+    <td class="hidden-phone"><%= Cashier.find(sales_order.cashier_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= Bank.find(sales_order.credit_card_bank_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.credit_card_number rescue '' %></td>
+    <td class="hidden-phone"><%= Bank.find(sales_order.debit_card_bank_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.debit_card_number rescue '' %></td>
+    <td class="hidden-phone"><%= Member.find(sales_order.member_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.nominal rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.pay_left rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.payment_date rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.payment_type rescue '' %></td>
+    <td class="hidden-phone"><%= SalesOrder.find(sales_order.sales_order_id).so_number rescue '' %></td>
+    <td class="hidden-phone"><%= Salesman.find(sales_order.salesman_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= sales_order.voucher_code rescue '' %></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=22>
+    <%= will_paginate @sales_order_payments %>
+  </td>
+</tr>

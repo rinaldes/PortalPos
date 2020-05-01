@@ -1,0 +1,18 @@
+<% @areas.each_with_index do |area, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td><span class="name"><%= area.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= area.name rescue ''%></td>
+    <td class="hidden-phone"><%= area.region_code rescue '' %></td>
+    <td class="hidden-phone"><%= area.region_name rescue '' %></td>
+    <td class="hidden-phone">
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_area_path(area), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{area.id}, 'areas')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @areas %>
+  </td>
+</tr>

@@ -1,0 +1,215 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="ribbon"><!-- RIBBON -->
+  <ol class="breadcrumb"><!-- breadcrumb -->
+    <li>Data Master</li><li>Toko</li><li><%= label %></li>
+  </ol><!-- end breadcrumb -->
+</div><!-- END RIBBON -->
+<div id="content"><!-- MAIN CONTENT -->
+  <%= render 'layouts/errors' %>
+  <div class="row">
+    <article class="col-sm-12 col-md-12"><!-- NEW COL START -->
+      <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header id="header-shop">
+          <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+          <h2><%= label %> Toko</h2>
+        </header>
+        <div><!-- widget div-->
+          <div class="widget-body no-padding"><!-- widget content -->
+            <%= form_for @shop, html: {class: "smart-form", id: "form-update-verify"} do |f| %>
+              <fieldset>
+                <div class="row">
+                  <section class="col col-md-12">
+                    <section>
+                      <label class="col-md-2 label">Kode</label>
+                      <label class="input col-md-10 custom-input-box">
+                        <%= f.text_field :code, class: "input-sm" %>
+                      </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Nama <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :name, :class => "input-sm #{(error_field @shop, :name)}" %></label>
+                    </section>
+                    <section class="form-group">
+                      <label class="col-md-2 label">Subbeat <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box">
+                        <%= text_field_tag :subbeat_id, params[:subbeat_id], class: "input-sm autocomplete-field", placeholder: "Select or type to autocomplete" %>
+                      </label>
+                    </section>
+                    <section class="form-group">
+                      <label class="col-md-2 label">Kelurahan <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box">
+                        <%= text_field_tag :kelurahan_id, params[:kelurahan_id], class: "input-sm autocomplete-field", placeholder: "Select or type to autocomplete" %>
+                      </label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Alamat <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :address, :class => "input-sm #{(error_field @shop, :address)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Telepon <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :telp, :class => "input-sm #{(error_field @shop, :telp)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Fax <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :fax, :class => "input-sm #{(error_field @shop, :fax)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">Email <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :email, :class => "input-sm #{(error_field @shop, :email)}"%></label>
+                    </section>
+                    <section>
+                      <label class="col-md-2 label">NPWP <span class='important'>*</span></label>
+                      <label class="input col-md-10 custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                    </section>
+<!-- 
+                    <section>
+                      <div class="container">
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a data-toggle="tab" href="#general">Geo Area</a></li>
+                          <li><a data-toggle="tab" href="#area">Sales Area</a></li>
+                        </ul>
+                        <div class="tab-content">
+                          <div id="general" class="tab-pane active">
+                            <section>
+                              <label class="label">Wilayah <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Provinsi <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Kota <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Kecamatan <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                          
+                            <section class="form-group">
+                              <label class="label">Kelurahan</label>
+                              <label class="input custom-input-box">
+                                <%= text_field_tag :kelurahan_id, params[:kelurahan_id], class: "input-sm autocomplete-field", placeholder: "Select or type to autocomplete" %>
+                                <a class="ui-button ui-widget ui-state-default ui-button-icon-only custom-combobox-toggle ui-corner-right" tabindex="-1" onclick="$(this).next().show()">
+                                  <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span><span class="ui-button-text"></span>
+                                </a>
+                                <ul style="display: none; width: 100%; top: 29px;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content">
+                                  <%# @kelurahans.each{|kelurahan| %>
+                                    <li tabindex="-1" id="ui-id-2" class="ui-menu-item"><%#= kelurahan %></li>
+                                  <%# } %>
+                                </ul>
+                              </label>
+                            </section> 
+                          </div>
+                          <div id="area" class="tab-pane fade">
+                            
+                            <section>
+                              <label class="label">Wilayah <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Daerah <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Penyalur <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Distrik <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                            <section>
+                              <label class="label">Beat <span class='important'>*</span></label>
+                              <label class="input custom-input-box"><%= f.text_field :npwp, :class => "input-sm #{(error_field @shop, :npwp)}"%></label>
+                            </section>
+                               
+                            <section class="form-group">
+                              <label class="label">Subbeat</label>
+                              <label class="input custom-input-box">
+                                <%= text_field_tag :subbeat_id, params[:subbeat_id], class: "input-sm autocomplete-field", placeholder: "Select or type to autocomplete" %>
+                                <a class="ui-button ui-widget ui-state-default ui-button-icon-only custom-combobox-toggle ui-corner-right" tabindex="-1" onclick="$(this).next().show()">
+                                  <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span><span class="ui-button-text"></span>
+                                </a>
+                                <ul style="display: none; width: 100%; top: 29px;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content">
+                                  <%# @subbeats.each{|subbeat| %>
+                                    <li tabindex="-1" id="ui-id-2" class="ui-menu-item"><%#= subbeat %></li>
+                                  <%# } %>
+                                </ul>
+                              </label>
+                            </section>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </section>
+                </div> -->
+              </fieldset>
+              <footer>
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+                <button type="button" class="btn btn-default" onclick="window.history.back();">
+                  Back
+                </button>
+              </footer>
+            <% end %>
+          </div><!-- end widget content -->
+        </div><!-- end widget div -->
+      </div><!-- end widget -->
+    </article><!-- END COL -->
+  </div><!-- end widget div -->
+</div><!-- end widget div -->
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#distributor_id").autocomplete({
+    search: function () {},
+    source: function (request, response)
+    {
+      $.ajax(
+      {
+        url: "/distributors/autocomplete_distributor_name",
+        dataType: "json",
+        data: {term: request.term},
+        success: function (data){
+          response(data)
+        },
+      });
+    },
+    select: function( event, ui ) {
+    },
+      minLength: 1
+    });
+  $("#city_id").autocomplete({
+    search: function () {},
+    source: function (request, response)
+    {
+      $.ajax(
+      {
+        url: "/cities/autocomplete_city_name",
+        dataType: "json",
+        data: {term: request.term},
+        success: function (data){
+          response(data)
+        },
+      });
+    },
+    select: function( event, ui ) {
+    },
+      minLength: 1
+    });
+})
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<STYLE>
+  .qty_detail{
+    width: 90%;
+    height: 100%;
+  }
+  .p3px{
+    padding: 3px !important;
+  }
+</STYLE>

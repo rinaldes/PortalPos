@@ -1,0 +1,6 @@
+<header class="panel-heading tab-bg-dark-navy-blue "%>
+<ul class="nav nav-tabs">
+  <li class="<%= params[:controller] == 'sales_orders' ? 'active' : ''%>"><%= link_to "Sales Order", "/sales_orders" %></li>
+  <li class="<%= params[:controller] == 'sales_order_payments' ? 'active' : ''%>"><%= link_to "Sales Order Payment", "/sales_order_payments" %></li>
+</ul>
+</header>

@@ -1,0 +1,17 @@
+<% @retur_orders.each_with_index do |retur_order, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= link_to retur_order.description, retur_order_url(retur_order) %></td>
+    <td class="hidden-phone"><%= Member.find(retur_order.member_id).name rescue '' %></td>
+    <td class="hidden-phone"><%= SalesOrder.find(retur_order.sales_order_id).so_number rescue '' %></td>
+    <td class="hidden-phone"><%= retur_order.total rescue '' %></td>
+    <td class="hidden-phone"><%= retur_order.transaction_date rescue ''%></td>
+    <td class="hidden-phone"><%= SaleTransaction.find(retur_order.transaction_id).transaction_number rescue ''%></td>
+    <td class="hidden-phone"><%= User.find(retur_order.user_id).username rescue ''%></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @retur_orders %>
+  </td>
+</tr>

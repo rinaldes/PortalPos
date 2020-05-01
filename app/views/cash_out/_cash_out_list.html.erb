@@ -1,0 +1,17 @@
+<% @cash_outs.each_with_index do |cash_out, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= cash_out.cash_value rescue '' %></td>
+    <td class="hidden-phone"><%= cash_out.description rescue '' %></td>
+    <td class="hidden-phone"><%= cash_out.jurnal_id rescue '' %></td>
+    <td class="hidden-phone"><%= cash_out.number_id rescue '' %></td>
+    <td class="hidden-phone"><%= cash_out.transaction_date rescue ''%></td>
+    <td class="hidden-phone"><%= SaleTransaction.find(cash_out.transaction_id).transaction_number rescue ''%></td>
+    <td class="hidden-phone"><%= User.find(cash_out.user_id).username rescue ''%></td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @cash_outs %>
+  </td>
+</tr>

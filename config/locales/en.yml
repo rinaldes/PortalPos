@@ -1,0 +1,57 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  must_be_uniq_per_province: 'Must be uniq per Province'
+  must_be_uniq_per_city: 'Must be uniq per City'
+  hello: "Hello world"
+  survey_name: "Survey Name"
+  description: "Description"
+  period: "Period"
+  language: "Language"
+  user_management: "User Management"
+  role_management: "Role Management"
+  dashboard: "Dashboard"
+  approval_level: "Approval Level"
+  data_master: "Data Master"
+  survey: "Survey"
+  vision: "Vision"
+  mision: "Mision"
+  culture: "Culture"
+  code_of_conduct: "Code Of Conduct"
+  value_of_company: "Value Of Company"
+  attendance_setting: "Attendance Setting"
+  holidays: "Holidays"
+  holiday_type: "Holiday Type"                     
+  shift: "Shift"                      
+  organization: "Organization"                      
+  fingerprint: "Fingerprint"                      
+  schedule: "Schedule"
+  component_indicator: "Component & Indicator"  
+  recruitment: "Recuitment"
+  employee: "Employee"
+  absence: "Absence"
+  overtime_request: "Overtime Request"
+  leave_request: "Leave Request"
+  approval: "Approval"
+  asset_assignment: "Asset Assignment"
+  knowledge_management: "Knowledge Management"  
+  master_company: "Master Company"                   

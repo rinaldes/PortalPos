@@ -1,0 +1,20 @@
+<% @beats.each_with_index do |beat, i| %>
+  <tr>
+    <td class="hidden-phone"><%= params[:page] ? (params[:page].to_i*10+i-9) : i+1 %></td>
+    <td class="hidden-phone"><%= beat.distributor_code rescue '' %></td>
+    <td class="hidden-phone"><%= beat.distributor_name rescue '' %></td>
+    <td class="hidden-phone"><%= beat.distrik_code rescue '' %></td>
+    <td class="hidden-phone"><%= beat.distrik_name rescue '' %></td>
+    <td><span class="name"><%= beat.code rescue ''%></span></td>
+    <td class="hidden-phone"><%= beat.name rescue ''%></td>
+    <td class="hidden-phone" style='white-space: nowrap'>
+      <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_beat_path(beat), class: "btn btn-primary btn-xs" %>
+      <%= link_to raw('<i class="fa fa-trash-o"></i>'), 'javascript:void(0)', onclick: "delete_one(#{beat.id}, 'beats')", class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+<tr>
+  <td colspan=8>
+    <%= will_paginate @beats %>
+  </td>
+</tr>
